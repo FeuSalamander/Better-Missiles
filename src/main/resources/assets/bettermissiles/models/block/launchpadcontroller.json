@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "bettermissiles:blocks/controller",
+    "up": "bettermissiles:blocks/controller",
+    "north": "bettermissiles:blocks/controller",
+    "east": "bettermissiles:blocks/controller",
+    "south": "bettermissiles:blocks/controller",
+    "west": "bettermissiles:blocks/controller",
+    "particle": "bettermissiles:blocks/controller"
+  }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "Launch pad structure",
+    "icon": "bettermissiles:pad",
+    "category": "bettermissiles:launchpad",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "When the structure is completed you will be able to open the gui with a right click to set where the missile will explose.To see the structure, turn the page !"
+        }, {
+            "type": "patchouli:crafting",
+            "recipe": "bettermissiles:controller",
+            "recipe2": "bettermissiles:padrecipe"
+        }, {
+            "type": "multiblock",
+            "name": "Launch Pad",
+            "multiblock": {
+                "pattern": [
+                    [ " 0 ", " C ", "AAA", "AAA", "AAA" ]
+                ],
+                "mapping": {
+                    "C": "bettermissiles:launchpadcontroller",
+                    "A": "bettermissiles:pad"
+                },
+                "symmetrical": true
+            }
+        }
+    ]
+}

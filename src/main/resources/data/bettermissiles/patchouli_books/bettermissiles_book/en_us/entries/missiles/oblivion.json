@@ -1,0 +1,11 @@
+{
+    "name": "Oblivion",
+    "icon": "bettermissiles:oblivion",
+    "category": "bettermissiles:test_category",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "This tier 3 missile spawn tnts and create a star in the ground"
+        }
+    ]
+}

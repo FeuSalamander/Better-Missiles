@@ -1,0 +1,15 @@
+{
+  "mappings": {
+    "default": {
+      "map": {
+        "east": "landing_pad",
+        "south": "landing_pad",
+        "north": "landing_pad",
+        "west": "landing_pad",
+        "up": "landing_pad",
+        "down": "landing_pad"
+      },
+      "name": "default"
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "_fv": 28,
+  "_type": "gui",
+  "definition": {
+    "type": 1,
+    "width": 285,
+    "height": 166,
+    "inventoryOffsetX": 0,
+    "inventoryOffsetY": 0,
+    "renderBgLayer": true,
+    "doesPauseGame": false,
+    "components": [
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "x",
+          "width": 120,
+          "height": 20,
+          "name": "xm",
+          "x": 203,
+          "y": 60
+        }
+      },
+      {
+        "type": "textfield",
+        "data": {
+          "placeholder": "z",
+          "width": 120,
+          "height": 20,
+          "name": "zm",
+          "x": 202,
+          "y": 93
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "set x",
+          "onClick": {
+            "name": "Setx"
+          },
+          "width": 30,
+          "height": 20,
+          "name": "set x",
+          "x": 322,
+          "y": 60
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "set z",
+          "onClick": {
+            "name": "Setz"
+          },
+          "width": 30,
+          "height": 20,
+          "name": "set z",
+          "x": 322,
+          "y": 93
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "x: <VAR:xm> z: <VAR:zm>",
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "name": "x: <VAR:xm> z: <VAR:zm>",
+          "x": 204,
+          "y": 48
+        }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "id": 0,
+          "disableStackInteraction": false,
+          "dropItemsWhenNotBound": true,
+          "name": "Slot #0",
+          "x": 132,
+          "y": 79
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "text": "Launchpad Controller",
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "name": "Launchpad Controller",
+          "x": 76,
+          "y": 42
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "Launch",
+          "onClick": {
+            "name": "Launch"
+          },
+          "width": 46,
+          "height": 20,
+          "name": "Launch",
+          "x": 300,
+          "y": 176
+        }
+      },
+      {
+        "type": "button",
+        "data": {
+          "text": "place it",
+          "onClick": {
+            "name": "Place"
+          },
+          "width": 46,
+          "height": 20,
+          "name": "place it",
+          "x": 300,
+          "y": 137
+        }
+      }
+    ],
+    "gridSettings": {
+      "sx": 18,
+      "sy": 18,
+      "ox": 11,
+      "oy": 15,
+      "snapOnGrid": false
+    }
+  }
+}

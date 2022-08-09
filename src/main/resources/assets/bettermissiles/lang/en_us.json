@@ -1,0 +1,13 @@
+{
+  "item.bettermissiles.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
+  "block.missile_craft.launchpadcontroller": "Launchpad Controller",
+  "block.bettermissiles.pad": "Launch Pad",
+  "itemGroup.tabbettermissiles": "Better Missiles",
+  "item.bettermissiles.oblivion": "Oblivion Missile",
+  "block.bettermissiles.launchpadcontroller": "Launchpad Controller",
+  "block.missile_craft.pad": "Launchpad",
+  "item.missile_craft.oblivion": "Oblivion Missile",
+  "entity.bettermissiles.oblivionmissile": "Oblivion",
+  "item.missile_craft.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
+  "entity.missile_craft.oblivionmissile": "Oblivion"
+}

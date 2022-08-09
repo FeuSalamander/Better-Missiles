@@ -1,0 +1,13 @@
+{
+  "parent": "bettermissiles:custom/landing_pad_model",
+  "textures": {
+    "all": "bettermissiles:blocks/landing_pad",
+    "particle": "bettermissiles:blocks/landing_pad",
+    "east": "bettermissiles:blocks/landing_pad",
+    "south": "bettermissiles:blocks/landing_pad",
+    "north": "bettermissiles:blocks/landing_pad",
+    "west": "bettermissiles:blocks/landing_pad",
+    "up": "bettermissiles:blocks/landing_pad",
+    "down": "bettermissiles:blocks/landing_pad"
+  }
+}
