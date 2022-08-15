@@ -1,0 +1,7 @@
+{
+  "parent": "bettermissiles:custom/golgot",
+  "textures": {
+    "0": "bettermissiles:blocks/oblivion",
+    "particle": "bettermissiles:items/black"
+  }
+}

@@ -299,6 +299,70 @@
       "compiles": true,
       "locked_code": false,
       "registry_name": "bettermissiles"
+    },
+    {
+      "name": "Golgot",
+      "type": "item",
+      "sortid": 21,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "golgot"
+    },
+    {
+      "name": "Golgotmissile",
+      "type": "livingentity",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "golgotmissile"
+    },
+    {
+      "name": "Golgotrecup",
+      "type": "procedure",
+      "sortid": 23,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "golgotrecup",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Golgotexplosion",
+      "type": "procedure",
+      "sortid": 24,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "golgotexplosion",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
@@ -324,15 +388,18 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "item.bettermissiles.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
       "block.missile_craft.launchpadcontroller": "Launchpad Controller",
-      "block.bettermissiles.pad": "Launch Pad",
-      "itemGroup.tabbettermissiles": "Better Missiles",
+      "item.bettermissiles.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
       "item.bettermissiles.oblivion": "Oblivion Missile",
-      "block.bettermissiles.launchpadcontroller": "Launchpad Controller",
       "block.missile_craft.pad": "Launchpad",
       "item.missile_craft.oblivion": "Oblivion Missile",
       "entity.bettermissiles.oblivionmissile": "Oblivion",
+      "entity.bettermissiles.golgotmissile": "Golgot",
+      "block.bettermissiles.pad": "Launch Pad",
+      "itemGroup.tabbettermissiles": "Better Missiles",
+      "block.bettermissiles.launchpadcontroller": "Launchpad Controller",
+      "item.bettermissiles.golgotmissile_spawn_egg": "Golgot Spawn Egg",
+      "item.bettermissiles.golgot": "Golgot Missile",
       "item.missile_craft.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
       "entity.missile_craft.oblivionmissile": "Oblivion"
     }
@@ -344,7 +411,7 @@
   "workspaceSettings": {
     "modid": "bettermissiles",
     "modName": "Better Missiles",
-    "version": "1.1.0",
+    "version": "1.1.2",
     "description": "Add missiles to your minecraft adventures.",
     "author": "FeuSalamander",
     "websiteURL": "https://www.curseforge.com/minecraft/mc-mods/better-missiles",

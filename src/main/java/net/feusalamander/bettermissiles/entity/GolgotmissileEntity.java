@@ -29,10 +29,10 @@ import net.minecraft.entity.CreatureEntity;
 import net.minecraft.entity.CreatureAttribute;
 import net.minecraft.entity.AreaEffectCloudEntity;
 
-import net.feusalamander.bettermissiles.procedures.MissiletestRightClickedOnEntityProcedure;
 import net.feusalamander.bettermissiles.procedures.MissiletestOnEntityTickUpdateProcedure;
-import net.feusalamander.bettermissiles.procedures.MissiletestEntityDiesProcedure;
-import net.feusalamander.bettermissiles.entity.renderer.OblivionmissileRenderer;
+import net.feusalamander.bettermissiles.procedures.GolgotrecupProcedure;
+import net.feusalamander.bettermissiles.procedures.GolgotexplosionProcedure;
+import net.feusalamander.bettermissiles.entity.renderer.GolgotmissileRenderer;
 import net.feusalamander.bettermissiles.BettermissilesModElements;
 
 import java.util.stream.Stream;
@@ -41,14 +41,14 @@ import java.util.HashMap;
 import java.util.AbstractMap;
 
 @BettermissilesModElements.ModElement.Tag
-public class OblivionmissileEntity extends BettermissilesModElements.ModElement {
+public class GolgotmissileEntity extends BettermissilesModElements.ModElement {
 	public static EntityType entity = (EntityType.Builder.<CustomEntity>create(CustomEntity::new, EntityClassification.MONSTER)
 			.setShouldReceiveVelocityUpdates(true).setTrackingRange(3).setUpdateInterval(3).setCustomClientFactory(CustomEntity::new).immuneToFire()
-			.size(0.6f, 3.25f)).build("oblivionmissile").setRegistryName("oblivionmissile");
+			.size(0.6f, 3.25f)).build("golgotmissile").setRegistryName("golgotmissile");
 
-	public OblivionmissileEntity(BettermissilesModElements instance) {
-		super(instance, 16);
-		FMLJavaModLoadingContext.get().getModEventBus().register(new OblivionmissileRenderer.ModelRegisterHandler());
+	public GolgotmissileEntity(BettermissilesModElements instance) {
+		super(instance, 22);
+		FMLJavaModLoadingContext.get().getModEventBus().register(new GolgotmissileRenderer.ModelRegisterHandler());
 		FMLJavaModLoadingContext.get().getModEventBus().register(new EntityAttributesRegisterHandler());
 	}
 
@@ -151,7 +151,7 @@ public class OblivionmissileEntity extends BettermissilesModElements.ModElement 
 			Entity sourceentity = source.getTrueSource();
 			Entity entity = this;
 
-			MissiletestEntityDiesProcedure.executeProcedure(Stream
+			GolgotexplosionProcedure.executeProcedure(Stream
 					.of(new AbstractMap.SimpleEntry<>("world", world), new AbstractMap.SimpleEntry<>("x", x), new AbstractMap.SimpleEntry<>("y", y),
 							new AbstractMap.SimpleEntry<>("z", z))
 					.collect(HashMap::new, (_m, _e) -> _m.put(_e.getKey(), _e.getValue()), Map::putAll));
@@ -167,7 +167,7 @@ public class OblivionmissileEntity extends BettermissilesModElements.ModElement 
 			double z = this.getPosZ();
 			Entity entity = this;
 
-			MissiletestRightClickedOnEntityProcedure.executeProcedure(
+			GolgotrecupProcedure.executeProcedure(
 					Stream.of(new AbstractMap.SimpleEntry<>("entity", entity), new AbstractMap.SimpleEntry<>("sourceentity", sourceentity))
 							.collect(HashMap::new, (_m, _e) -> _m.put(_e.getKey(), _e.getValue()), Map::putAll));
 			return retval;

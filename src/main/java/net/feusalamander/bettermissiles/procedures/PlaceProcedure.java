@@ -16,7 +16,9 @@ import net.minecraft.entity.ILivingEntityData;
 import net.minecraft.entity.Entity;
 
 import net.feusalamander.bettermissiles.item.OblivionItem;
+import net.feusalamander.bettermissiles.item.GolgotItem;
 import net.feusalamander.bettermissiles.entity.OblivionmissileEntity;
+import net.feusalamander.bettermissiles.entity.GolgotmissileEntity;
 import net.feusalamander.bettermissiles.BettermissilesMod;
 
 import java.util.function.Supplier;
@@ -230,6 +232,191 @@ public class PlaceProcedure {
 			}
 			if (world instanceof ServerWorld) {
 				Entity entityToSpawn = new OblivionmissileEntity.CustomEntity(OblivionmissileEntity.entity, (World) world);
+				entityToSpawn.setLocationAndAngles((x - 1.5), y, (z + 0.5), (float) 0, (float) 0);
+				entityToSpawn.setRenderYawOffset((float) 0);
+				entityToSpawn.setRotationYawHead((float) 0);
+				entityToSpawn.setMotion(0, 0, 0);
+				if (entityToSpawn instanceof MobEntity)
+					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
+							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
+				world.addEntity(entityToSpawn);
+			}
+		}
+		if ((new Object() {
+			public ItemStack getItemStack(int sltid) {
+				Entity _ent = entity;
+				if (_ent instanceof ServerPlayerEntity) {
+					Container _current = ((ServerPlayerEntity) _ent).openContainer;
+					if (_current instanceof Supplier) {
+						Object invobj = ((Supplier) _current).get();
+						if (invobj instanceof Map) {
+							return ((Slot) ((Map) invobj).get(sltid)).getStack();
+						}
+					}
+				}
+				return ItemStack.EMPTY;
+			}
+		}.getItemStack((int) (0))).getItem() == GolgotItem.block && (new Object() {
+			public String getValue(IWorld world, BlockPos pos, String tag) {
+				TileEntity tileEntity = world.getTileEntity(pos);
+				if (tileEntity != null)
+					return tileEntity.getTileData().getString(tag);
+				return "";
+			}
+		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("sud")) {
+			{
+				Entity _ent = entity;
+				if (_ent instanceof ServerPlayerEntity) {
+					Container _current = ((ServerPlayerEntity) _ent).openContainer;
+					if (_current instanceof Supplier) {
+						Object invobj = ((Supplier) _current).get();
+						if (invobj instanceof Map) {
+							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
+							_current.detectAndSendChanges();
+						}
+					}
+				}
+			}
+			if (world instanceof ServerWorld) {
+				Entity entityToSpawn = new GolgotmissileEntity.CustomEntity(GolgotmissileEntity.entity, (World) world);
+				entityToSpawn.setLocationAndAngles((x + 0.5), y, (z + 2.5), (float) 0, (float) 0);
+				entityToSpawn.setRenderYawOffset((float) 0);
+				entityToSpawn.setRotationYawHead((float) 0);
+				entityToSpawn.setMotion(0, 0, 0);
+				if (entityToSpawn instanceof MobEntity)
+					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
+							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
+				world.addEntity(entityToSpawn);
+			}
+		} else if ((new Object() {
+			public ItemStack getItemStack(int sltid) {
+				Entity _ent = entity;
+				if (_ent instanceof ServerPlayerEntity) {
+					Container _current = ((ServerPlayerEntity) _ent).openContainer;
+					if (_current instanceof Supplier) {
+						Object invobj = ((Supplier) _current).get();
+						if (invobj instanceof Map) {
+							return ((Slot) ((Map) invobj).get(sltid)).getStack();
+						}
+					}
+				}
+				return ItemStack.EMPTY;
+			}
+		}.getItemStack((int) (0))).getItem() == GolgotItem.block && (new Object() {
+			public String getValue(IWorld world, BlockPos pos, String tag) {
+				TileEntity tileEntity = world.getTileEntity(pos);
+				if (tileEntity != null)
+					return tileEntity.getTileData().getString(tag);
+				return "";
+			}
+		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("nord")) {
+			{
+				Entity _ent = entity;
+				if (_ent instanceof ServerPlayerEntity) {
+					Container _current = ((ServerPlayerEntity) _ent).openContainer;
+					if (_current instanceof Supplier) {
+						Object invobj = ((Supplier) _current).get();
+						if (invobj instanceof Map) {
+							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
+							_current.detectAndSendChanges();
+						}
+					}
+				}
+			}
+			if (world instanceof ServerWorld) {
+				Entity entityToSpawn = new GolgotmissileEntity.CustomEntity(GolgotmissileEntity.entity, (World) world);
+				entityToSpawn.setLocationAndAngles((x + 0.5), y, (z - 1.5), (float) 0, (float) 0);
+				entityToSpawn.setRenderYawOffset((float) 0);
+				entityToSpawn.setRotationYawHead((float) 0);
+				entityToSpawn.setMotion(0, 0, 0);
+				if (entityToSpawn instanceof MobEntity)
+					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
+							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
+				world.addEntity(entityToSpawn);
+			}
+		} else if ((new Object() {
+			public ItemStack getItemStack(int sltid) {
+				Entity _ent = entity;
+				if (_ent instanceof ServerPlayerEntity) {
+					Container _current = ((ServerPlayerEntity) _ent).openContainer;
+					if (_current instanceof Supplier) {
+						Object invobj = ((Supplier) _current).get();
+						if (invobj instanceof Map) {
+							return ((Slot) ((Map) invobj).get(sltid)).getStack();
+						}
+					}
+				}
+				return ItemStack.EMPTY;
+			}
+		}.getItemStack((int) (0))).getItem() == GolgotItem.block && (new Object() {
+			public String getValue(IWorld world, BlockPos pos, String tag) {
+				TileEntity tileEntity = world.getTileEntity(pos);
+				if (tileEntity != null)
+					return tileEntity.getTileData().getString(tag);
+				return "";
+			}
+		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("est")) {
+			{
+				Entity _ent = entity;
+				if (_ent instanceof ServerPlayerEntity) {
+					Container _current = ((ServerPlayerEntity) _ent).openContainer;
+					if (_current instanceof Supplier) {
+						Object invobj = ((Supplier) _current).get();
+						if (invobj instanceof Map) {
+							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
+							_current.detectAndSendChanges();
+						}
+					}
+				}
+			}
+			if (world instanceof ServerWorld) {
+				Entity entityToSpawn = new GolgotmissileEntity.CustomEntity(GolgotmissileEntity.entity, (World) world);
+				entityToSpawn.setLocationAndAngles((x + 2.5), y, (z + 0.5), (float) 0, (float) 0);
+				entityToSpawn.setRenderYawOffset((float) 0);
+				entityToSpawn.setRotationYawHead((float) 0);
+				entityToSpawn.setMotion(0, 0, 0);
+				if (entityToSpawn instanceof MobEntity)
+					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
+							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
+				world.addEntity(entityToSpawn);
+			}
+		} else if ((new Object() {
+			public ItemStack getItemStack(int sltid) {
+				Entity _ent = entity;
+				if (_ent instanceof ServerPlayerEntity) {
+					Container _current = ((ServerPlayerEntity) _ent).openContainer;
+					if (_current instanceof Supplier) {
+						Object invobj = ((Supplier) _current).get();
+						if (invobj instanceof Map) {
+							return ((Slot) ((Map) invobj).get(sltid)).getStack();
+						}
+					}
+				}
+				return ItemStack.EMPTY;
+			}
+		}.getItemStack((int) (0))).getItem() == GolgotItem.block && (new Object() {
+			public String getValue(IWorld world, BlockPos pos, String tag) {
+				TileEntity tileEntity = world.getTileEntity(pos);
+				if (tileEntity != null)
+					return tileEntity.getTileData().getString(tag);
+				return "";
+			}
+		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("ouest")) {
+			{
+				Entity _ent = entity;
+				if (_ent instanceof ServerPlayerEntity) {
+					Container _current = ((ServerPlayerEntity) _ent).openContainer;
+					if (_current instanceof Supplier) {
+						Object invobj = ((Supplier) _current).get();
+						if (invobj instanceof Map) {
+							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
+							_current.detectAndSendChanges();
+						}
+					}
+				}
+			}
+			if (world instanceof ServerWorld) {
+				Entity entityToSpawn = new GolgotmissileEntity.CustomEntity(GolgotmissileEntity.entity, (World) world);
 				entityToSpawn.setLocationAndAngles((x - 1.5), y, (z + 0.5), (float) 0, (float) 0);
 				entityToSpawn.setRenderYawOffset((float) 0);
 				entityToSpawn.setRotationYawHead((float) 0);

@@ -1,0 +1,11 @@
+{
+    "name": "Golgot",
+    "icon": "bettermissiles:golgot",
+    "category": "bettermissiles:test_category",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "This tier 4 missile create an insanely huge explosion"
+        }
+    ]
+}
