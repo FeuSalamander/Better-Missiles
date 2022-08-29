@@ -1,0 +1,11 @@
+{
+    "name": "Proxy",
+    "icon": "bettermissiles:proxy",
+    "category": "bettermissiles:test_category",
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "This tier 1 missile create a small explosion"
+        }
+    ]
+}

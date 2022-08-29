@@ -363,6 +363,70 @@
           }
         ]
       }
+    },
+    {
+      "name": "Proxymissile",
+      "type": "livingentity",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "proxymissile"
+    },
+    {
+      "name": "Proxyexplosion",
+      "type": "procedure",
+      "sortid": 26,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "proxyexplosion",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Proxyrecup",
+      "type": "procedure",
+      "sortid": 27,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "proxyrecup",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Proxy",
+      "type": "item",
+      "sortid": 28,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "proxy"
     }
   ],
   "variable_elements": [
@@ -388,18 +452,21 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "block.missile_craft.launchpadcontroller": "Launchpad Controller",
       "item.bettermissiles.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
+      "block.missile_craft.launchpadcontroller": "Launchpad Controller",
+      "item.bettermissiles.proxy": "Proxy Missile",
       "item.bettermissiles.oblivion": "Oblivion Missile",
       "block.missile_craft.pad": "Launchpad",
       "item.missile_craft.oblivion": "Oblivion Missile",
       "entity.bettermissiles.oblivionmissile": "Oblivion",
       "entity.bettermissiles.golgotmissile": "Golgot",
       "block.bettermissiles.pad": "Launch Pad",
+      "entity.bettermissiles.proxymissile": "Proxy",
       "itemGroup.tabbettermissiles": "Better Missiles",
       "block.bettermissiles.launchpadcontroller": "Launchpad Controller",
       "item.bettermissiles.golgotmissile_spawn_egg": "Golgot Spawn Egg",
       "item.bettermissiles.golgot": "Golgot Missile",
+      "item.bettermissiles.proxymissile_spawn_egg": "Proxy Spawn Egg",
       "item.missile_craft.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
       "entity.missile_craft.oblivionmissile": "Oblivion"
     }
@@ -411,7 +478,7 @@
   "workspaceSettings": {
     "modid": "bettermissiles",
     "modName": "Better Missiles",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "description": "Add missiles to your minecraft adventures.",
     "author": "FeuSalamander",
     "websiteURL": "https://www.curseforge.com/minecraft/mc-mods/better-missiles",

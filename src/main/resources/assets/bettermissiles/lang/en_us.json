@@ -1,16 +1,19 @@
 {
-  "block.missile_craft.launchpadcontroller": "Launchpad Controller",
   "item.bettermissiles.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
+  "block.missile_craft.launchpadcontroller": "Launchpad Controller",
+  "item.bettermissiles.proxy": "Proxy Missile",
   "item.bettermissiles.oblivion": "Oblivion Missile",
   "block.missile_craft.pad": "Launchpad",
   "item.missile_craft.oblivion": "Oblivion Missile",
   "entity.bettermissiles.oblivionmissile": "Oblivion",
   "entity.bettermissiles.golgotmissile": "Golgot",
   "block.bettermissiles.pad": "Launch Pad",
+  "entity.bettermissiles.proxymissile": "Proxy",
   "itemGroup.tabbettermissiles": "Better Missiles",
   "block.bettermissiles.launchpadcontroller": "Launchpad Controller",
   "item.bettermissiles.golgotmissile_spawn_egg": "Golgot Spawn Egg",
   "item.bettermissiles.golgot": "Golgot Missile",
+  "item.bettermissiles.proxymissile_spawn_egg": "Proxy Spawn Egg",
   "item.missile_craft.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
   "entity.missile_craft.oblivionmissile": "Oblivion"
 }
