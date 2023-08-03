@@ -1,29 +1,18 @@
 package net.feusalamander.bettermissiles.procedures;
 
-import net.minecraft.world.IWorld;
-import net.minecraft.client.gui.widget.TextFieldWidget;
+import org.checkerframework.checker.units.qual.s;
 
-import net.feusalamander.bettermissiles.BettermissilesModVariables;
-import net.feusalamander.bettermissiles.BettermissilesMod;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.client.gui.components.EditBox;
 
-import java.util.Map;
+import net.feusalamander.bettermissiles.network.BettermissilesModVariables;
+
 import java.util.HashMap;
 
 public class SetzProcedure {
-
-	public static void executeProcedure(Map<String, Object> dependencies) {
-		if (dependencies.get("world") == null) {
-			if (!dependencies.containsKey("world"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency world for procedure Setz!");
+	public static void execute(LevelAccessor world, HashMap guistate) {
+		if (guistate == null)
 			return;
-		}
-		if (dependencies.get("guistate") == null) {
-			if (!dependencies.containsKey("guistate"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency guistate for procedure Setz!");
-			return;
-		}
-		IWorld world = (IWorld) dependencies.get("world");
-		HashMap guistate = (HashMap) dependencies.get("guistate");
 		BettermissilesModVariables.MapVariables.get(world).zm = new Object() {
 			double convert(String s) {
 				try {
@@ -32,15 +21,7 @@ public class SetzProcedure {
 				}
 				return 0;
 			}
-		}.convert(new Object() {
-			public String getText() {
-				TextFieldWidget _tf = (TextFieldWidget) guistate.get("text:zm");
-				if (_tf != null) {
-					return _tf.getText();
-				}
-				return "";
-			}
-		}.getText());
+		}.convert(guistate.containsKey("text:zm") ? ((EditBox) guistate.get("text:zm")).getValue() : "");
 		BettermissilesModVariables.MapVariables.get(world).syncData(world);
 	}
 }

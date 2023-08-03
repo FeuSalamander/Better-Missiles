@@ -1,5 +1,5 @@
 {
-  "_fv": 28,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 1,
@@ -26,14 +26,13 @@
     "damageVsEntity": 0.0,
     "specialInfo": [
       "t3 missile",
-      "spawn tnts",
-      "create a star in the ground"
+      "spawns tnts",
+      "creates a star in the ground"
     ],
     "hasGlow": false,
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
-    "hasDispenseBehavior": false,
     "isFood": false,
     "nutritionalValue": 4,
     "saturation": 0.3,

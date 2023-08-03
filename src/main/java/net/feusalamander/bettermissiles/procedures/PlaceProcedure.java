@@ -1,617 +1,306 @@
 package net.feusalamander.bettermissiles.procedures;
 
-import net.minecraft.world.server.ServerWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.IWorld;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.item.ItemStack;
-import net.minecraft.inventory.container.Slot;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.MobEntity;
-import net.minecraft.entity.ILivingEntityData;
-import net.minecraft.entity.Entity;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.inventory.Slot;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.core.BlockPos;
 
-import net.feusalamander.bettermissiles.item.ProxyItem;
-import net.feusalamander.bettermissiles.item.OblivionItem;
-import net.feusalamander.bettermissiles.item.GolgotItem;
+import net.feusalamander.bettermissiles.init.BettermissilesModItems;
+import net.feusalamander.bettermissiles.init.BettermissilesModEntities;
 import net.feusalamander.bettermissiles.entity.ProxymissileEntity;
 import net.feusalamander.bettermissiles.entity.OblivionmissileEntity;
 import net.feusalamander.bettermissiles.entity.GolgotmissileEntity;
-import net.feusalamander.bettermissiles.BettermissilesMod;
 
 import java.util.function.Supplier;
 import java.util.Map;
 
 public class PlaceProcedure {
-
-	public static void executeProcedure(Map<String, Object> dependencies) {
-		if (dependencies.get("world") == null) {
-			if (!dependencies.containsKey("world"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency world for procedure Place!");
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		if (entity == null)
 			return;
-		}
-		if (dependencies.get("x") == null) {
-			if (!dependencies.containsKey("x"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency x for procedure Place!");
-			return;
-		}
-		if (dependencies.get("y") == null) {
-			if (!dependencies.containsKey("y"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency y for procedure Place!");
-			return;
-		}
-		if (dependencies.get("z") == null) {
-			if (!dependencies.containsKey("z"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency z for procedure Place!");
-			return;
-		}
-		if (dependencies.get("entity") == null) {
-			if (!dependencies.containsKey("entity"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency entity for procedure Place!");
-			return;
-		}
-		IWorld world = (IWorld) dependencies.get("world");
-		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
-		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
-		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
-		Entity entity = (Entity) dependencies.get("entity");
-		if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
+		if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.OBLIVION.get()
+				&& (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
-				return ItemStack.EMPTY;
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("sud")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-		}.getItemStack((int) (0))).getItem() == OblivionItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new OblivionmissileEntity(BettermissilesModEntities.OBLIVIONMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 0.5), y, (z + 2.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("sud")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+				.getItem() == BettermissilesModItems.OBLIVION.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("nord")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new OblivionmissileEntity.CustomEntity(OblivionmissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 0.5), y, (z + 2.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new OblivionmissileEntity(BettermissilesModEntities.OBLIVIONMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 0.5), y, (z - 1.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+				.getItem() == BettermissilesModItems.OBLIVION.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
-				return ItemStack.EMPTY;
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("est")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-		}.getItemStack((int) (0))).getItem() == OblivionItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new OblivionmissileEntity(BettermissilesModEntities.OBLIVIONMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 2.5), y, (z + 0.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("nord")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY)
+				.getItem() == BettermissilesModItems.OBLIVION.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("ouest")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new OblivionmissileEntity.CustomEntity(OblivionmissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 0.5), y, (z - 1.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
-			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
-					}
-				}
-				return ItemStack.EMPTY;
-			}
-		}.getItemStack((int) (0))).getItem() == OblivionItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
-			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("est")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
-					}
-				}
-			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new OblivionmissileEntity.CustomEntity(OblivionmissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 2.5), y, (z + 0.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
-			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
-					}
-				}
-				return ItemStack.EMPTY;
-			}
-		}.getItemStack((int) (0))).getItem() == OblivionItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
-			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("ouest")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
-					}
-				}
-			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new OblivionmissileEntity.CustomEntity(OblivionmissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x - 1.5), y, (z + 0.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new OblivionmissileEntity(BettermissilesModEntities.OBLIVIONMISSILE.get(), _level);
+				entityToSpawn.moveTo((x - 1.5), y, (z + 0.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
+		if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.GOLGOT.get()
+				&& (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
-				return ItemStack.EMPTY;
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("sud")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-		}.getItemStack((int) (0))).getItem() == GolgotItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new GolgotmissileEntity(BettermissilesModEntities.GOLGOTMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 0.5), y, (z + 2.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("sud")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.GOLGOT
+				.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("nord")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new GolgotmissileEntity.CustomEntity(GolgotmissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 0.5), y, (z + 2.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new GolgotmissileEntity(BettermissilesModEntities.GOLGOTMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 0.5), y, (z - 1.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.GOLGOT
+				.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
-				return ItemStack.EMPTY;
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("est")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-		}.getItemStack((int) (0))).getItem() == GolgotItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new GolgotmissileEntity(BettermissilesModEntities.GOLGOTMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 2.5), y, (z + 0.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("nord")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.GOLGOT
+				.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("ouest")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new GolgotmissileEntity.CustomEntity(GolgotmissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 0.5), y, (z - 1.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
-			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
-					}
-				}
-				return ItemStack.EMPTY;
-			}
-		}.getItemStack((int) (0))).getItem() == GolgotItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
-			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("est")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
-					}
-				}
-			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new GolgotmissileEntity.CustomEntity(GolgotmissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 2.5), y, (z + 0.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
-			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
-					}
-				}
-				return ItemStack.EMPTY;
-			}
-		}.getItemStack((int) (0))).getItem() == GolgotItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
-			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("ouest")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
-					}
-				}
-			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new GolgotmissileEntity.CustomEntity(GolgotmissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x - 1.5), y, (z + 0.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new GolgotmissileEntity(BettermissilesModEntities.GOLGOTMISSILE.get(), _level);
+				entityToSpawn.moveTo((x - 1.5), y, (z + 0.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
 		}
-		if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
+		if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.PROXY.get()
+				&& (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
-				return ItemStack.EMPTY;
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("sud")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-		}.getItemStack((int) (0))).getItem() == ProxyItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new ProxymissileEntity(BettermissilesModEntities.PROXYMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 0.5), y, (z + 2.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("sud")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.PROXY
+				.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("nord")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new ProxymissileEntity.CustomEntity(ProxymissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 0.5), y, (z + 2.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new ProxymissileEntity(BettermissilesModEntities.PROXYMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 0.5), y, (z - 1.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.PROXY
+				.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
-				return ItemStack.EMPTY;
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("est")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-		}.getItemStack((int) (0))).getItem() == ProxyItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new ProxymissileEntity(BettermissilesModEntities.PROXYMISSILE.get(), _level);
+				entityToSpawn.moveTo((x + 2.5), y, (z + 0.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("nord")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
+		} else if ((entity instanceof ServerPlayer _plrSlotItem && _plrSlotItem.containerMenu instanceof Supplier _splr && _splr.get() instanceof Map _slt ? ((Slot) _slt.get(0)).getItem() : ItemStack.EMPTY).getItem() == BettermissilesModItems.PROXY
+				.get() && (new Object() {
+					public String getValue(LevelAccessor world, BlockPos pos, String tag) {
+						BlockEntity blockEntity = world.getBlockEntity(pos);
+						if (blockEntity != null)
+							return blockEntity.getPersistentData().getString(tag);
+						return "";
 					}
-				}
+				}.getValue(world, BlockPos.containing(x, y, z), "direction")).equals("ouest")) {
+			if (entity instanceof ServerPlayer _player && _player.containerMenu instanceof Supplier _current && _current.get() instanceof Map _slots) {
+				((Slot) _slots.get(0)).remove(1);
+				_player.containerMenu.broadcastChanges();
 			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new ProxymissileEntity.CustomEntity(ProxymissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 0.5), y, (z - 1.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
-			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
-					}
-				}
-				return ItemStack.EMPTY;
-			}
-		}.getItemStack((int) (0))).getItem() == ProxyItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
-			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("est")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
-					}
-				}
-			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new ProxymissileEntity.CustomEntity(ProxymissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x + 2.5), y, (z + 0.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
-			}
-		} else if ((new Object() {
-			public ItemStack getItemStack(int sltid) {
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							return ((Slot) ((Map) invobj).get(sltid)).getStack();
-						}
-					}
-				}
-				return ItemStack.EMPTY;
-			}
-		}.getItemStack((int) (0))).getItem() == ProxyItem.block && (new Object() {
-			public String getValue(IWorld world, BlockPos pos, String tag) {
-				TileEntity tileEntity = world.getTileEntity(pos);
-				if (tileEntity != null)
-					return tileEntity.getTileData().getString(tag);
-				return "";
-			}
-		}.getValue(world, new BlockPos(x, y, z), "direction")).equals("ouest")) {
-			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					Container _current = ((ServerPlayerEntity) _ent).openContainer;
-					if (_current instanceof Supplier) {
-						Object invobj = ((Supplier) _current).get();
-						if (invobj instanceof Map) {
-							((Slot) ((Map) invobj).get((int) (0))).decrStackSize((int) (1));
-							_current.detectAndSendChanges();
-						}
-					}
-				}
-			}
-			if (world instanceof ServerWorld) {
-				Entity entityToSpawn = new ProxymissileEntity.CustomEntity(ProxymissileEntity.entity, (World) world);
-				entityToSpawn.setLocationAndAngles((x - 1.5), y, (z + 0.5), (float) 0, (float) 0);
-				entityToSpawn.setRenderYawOffset((float) 0);
-				entityToSpawn.setRotationYawHead((float) 0);
-				entityToSpawn.setMotion(0, 0, 0);
-				if (entityToSpawn instanceof MobEntity)
-					((MobEntity) entityToSpawn).onInitialSpawn((ServerWorld) world, world.getDifficultyForLocation(entityToSpawn.getPosition()),
-							SpawnReason.MOB_SUMMONED, (ILivingEntityData) null, (CompoundNBT) null);
-				world.addEntity(entityToSpawn);
+			if (world instanceof ServerLevel _level) {
+				Entity entityToSpawn = new ProxymissileEntity(BettermissilesModEntities.PROXYMISSILE.get(), _level);
+				entityToSpawn.moveTo((x - 1.5), y, (z + 0.5), 0, 0);
+				entityToSpawn.setYBodyRot(0);
+				entityToSpawn.setYHeadRot(0);
+				entityToSpawn.setDeltaMovement(0, 0, 0);
+				if (entityToSpawn instanceof Mob _mobToSpawn)
+					_mobToSpawn.finalizeSpawn(_level, _level.getCurrentDifficultyAt(entityToSpawn.blockPosition()), MobSpawnType.MOB_SUMMONED, null, null);
+				_level.addFreshEntity(entityToSpawn);
 			}
 		}
 	}

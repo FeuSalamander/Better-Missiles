@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[36,)"
+loaderVersion="[45,)"
 license="All Rights Reserved"
 
 [[mods]]
@@ -10,29 +10,15 @@ credits="made by FeuSalamander"
 displayURL="https://www.curseforge.com/minecraft/mc-mods/better-missiles"
 logoFile="logo.png"
 authors="FeuSalamander"
-description='''
-Add missiles to your minecraft adventures.
-'''
+description="Add missiles to your minecraft adventures."
 
 [[dependencies.bettermissiles]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.5]"
+    versionRange="[1.19.4]"
     ordering="NONE"
     side="BOTH"
 
 
 
-[[dependencies.bettermissiles]]
-    modId="just_enough_items-1.16.5"
-    mandatory=false
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.bettermissiles]]
-    modId="patchouli-1.16.5"
-    mandatory=false
-    versionRange="[0,)"
-    ordering="NONE"
-    side="BOTH"
 

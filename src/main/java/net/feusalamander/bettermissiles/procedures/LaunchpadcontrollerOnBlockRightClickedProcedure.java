@@ -1,206 +1,153 @@
 package net.feusalamander.bettermissiles.procedures;
 
-import net.minecraftforge.fml.network.NetworkHooks;
+import net.minecraftforge.network.NetworkHooks;
 
-import net.minecraft.world.World;
-import net.minecraft.world.IWorld;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.inventory.container.INamedContainerProvider;
-import net.minecraft.inventory.container.Container;
-import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.Entity;
-import net.minecraft.block.BlockState;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.MenuProvider;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.core.BlockPos;
 
-import net.feusalamander.bettermissiles.gui.LauncherGui;
-import net.feusalamander.bettermissiles.block.PadBlock;
-import net.feusalamander.bettermissiles.BettermissilesMod;
-
-import java.util.Map;
+import net.feusalamander.bettermissiles.world.inventory.LauncherMenu;
+import net.feusalamander.bettermissiles.init.BettermissilesModBlocks;
 
 import io.netty.buffer.Unpooled;
 
 public class LaunchpadcontrollerOnBlockRightClickedProcedure {
-
-	public static void executeProcedure(Map<String, Object> dependencies) {
-		if (dependencies.get("world") == null) {
-			if (!dependencies.containsKey("world"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency world for procedure LaunchpadcontrollerOnBlockRightClicked!");
+	public static void execute(LevelAccessor world, double x, double y, double z, Entity entity) {
+		if (entity == null)
 			return;
-		}
-		if (dependencies.get("x") == null) {
-			if (!dependencies.containsKey("x"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency x for procedure LaunchpadcontrollerOnBlockRightClicked!");
-			return;
-		}
-		if (dependencies.get("y") == null) {
-			if (!dependencies.containsKey("y"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency y for procedure LaunchpadcontrollerOnBlockRightClicked!");
-			return;
-		}
-		if (dependencies.get("z") == null) {
-			if (!dependencies.containsKey("z"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency z for procedure LaunchpadcontrollerOnBlockRightClicked!");
-			return;
-		}
-		if (dependencies.get("entity") == null) {
-			if (!dependencies.containsKey("entity"))
-				BettermissilesMod.LOGGER.warn("Failed to load dependency entity for procedure LaunchpadcontrollerOnBlockRightClicked!");
-			return;
-		}
-		IWorld world = (IWorld) dependencies.get("world");
-		double x = dependencies.get("x") instanceof Integer ? (int) dependencies.get("x") : (double) dependencies.get("x");
-		double y = dependencies.get("y") instanceof Integer ? (int) dependencies.get("y") : (double) dependencies.get("y");
-		double z = dependencies.get("z") instanceof Integer ? (int) dependencies.get("z") : (double) dependencies.get("z");
-		Entity entity = (Entity) dependencies.get("entity");
 		boolean found = false;
 		double sx = 0;
 		double sy = 0;
 		double sz = 0;
-		if ((world.getBlockState(new BlockPos(x + 1, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 1, y, z + 2))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 1, y, z + 3))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x, y, z + 2))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x, y, z + 3))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 1, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 1, y, z + 2))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 1, y, z + 3))).getBlock() == PadBlock.block) {
+		if ((world.getBlockState(BlockPos.containing(x + 1, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x + 1, y, z + 2))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x + 1, y, z + 3))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x, y, z + 2))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x, y, z + 3))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x - 1, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x - 1, y, z + 2))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x - 1, y, z + 3))).getBlock() == BettermissilesModBlocks.PAD.get()) {
 			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					BlockPos _bpos = new BlockPos(x, y, z);
-					NetworkHooks.openGui((ServerPlayerEntity) _ent, new INamedContainerProvider() {
+				if (entity instanceof ServerPlayer _ent) {
+					BlockPos _bpos = BlockPos.containing(x, y, z);
+					NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
 						@Override
-						public ITextComponent getDisplayName() {
-							return new StringTextComponent("Launcher");
+						public Component getDisplayName() {
+							return Component.literal("Launcher");
 						}
 
 						@Override
-						public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
-							return new LauncherGui.GuiContainerMod(id, inventory, new PacketBuffer(Unpooled.buffer()).writeBlockPos(_bpos));
+						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+							return new LauncherMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 						}
 					}, _bpos);
 				}
 			}
-			if (!world.isRemote()) {
-				BlockPos _bp = new BlockPos(x, y, z);
-				TileEntity _tileEntity = world.getTileEntity(_bp);
+			if (!world.isClientSide()) {
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
-				if (_tileEntity != null)
-					_tileEntity.getTileData().putString("direction", "sud");
-				if (world instanceof World)
-					((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
+				if (_blockEntity != null)
+					_blockEntity.getPersistentData().putString("direction", "sud");
+				if (world instanceof Level _level)
+					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-		} else if ((world.getBlockState(new BlockPos(x + 1, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 1, y, z - 2))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 1, y, z - 3))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x, y, z - 2))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x, y, z - 3))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 1, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 1, y, z - 2))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 1, y, z - 3))).getBlock() == PadBlock.block) {
+		} else if ((world.getBlockState(BlockPos.containing(x + 1, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x + 1, y, z - 2))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x + 1, y, z - 3))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x, y, z - 2))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x, y, z - 3))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x - 1, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x - 1, y, z - 2))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x - 1, y, z - 3))).getBlock() == BettermissilesModBlocks.PAD.get()) {
 			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					BlockPos _bpos = new BlockPos(x, y, z);
-					NetworkHooks.openGui((ServerPlayerEntity) _ent, new INamedContainerProvider() {
+				if (entity instanceof ServerPlayer _ent) {
+					BlockPos _bpos = BlockPos.containing(x, y, z);
+					NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
 						@Override
-						public ITextComponent getDisplayName() {
-							return new StringTextComponent("Launcher");
+						public Component getDisplayName() {
+							return Component.literal("Launcher");
 						}
 
 						@Override
-						public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
-							return new LauncherGui.GuiContainerMod(id, inventory, new PacketBuffer(Unpooled.buffer()).writeBlockPos(_bpos));
+						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+							return new LauncherMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 						}
 					}, _bpos);
 				}
 			}
-			if (!world.isRemote()) {
-				BlockPos _bp = new BlockPos(x, y, z);
-				TileEntity _tileEntity = world.getTileEntity(_bp);
+			if (!world.isClientSide()) {
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
-				if (_tileEntity != null)
-					_tileEntity.getTileData().putString("direction", "nord");
-				if (world instanceof World)
-					((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
+				if (_blockEntity != null)
+					_blockEntity.getPersistentData().putString("direction", "nord");
+				if (world instanceof Level _level)
+					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-		} else if ((world.getBlockState(new BlockPos(x + 1, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 2, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 3, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 1, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 2, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 3, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 1, y, z))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 2, y, z))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x + 3, y, z))).getBlock() == PadBlock.block) {
+		} else if ((world.getBlockState(BlockPos.containing(x + 1, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x + 2, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x + 3, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x + 1, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x + 2, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x + 3, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x + 1, y, z))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x + 2, y, z))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x + 3, y, z))).getBlock() == BettermissilesModBlocks.PAD.get()) {
 			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					BlockPos _bpos = new BlockPos(x, y, z);
-					NetworkHooks.openGui((ServerPlayerEntity) _ent, new INamedContainerProvider() {
+				if (entity instanceof ServerPlayer _ent) {
+					BlockPos _bpos = BlockPos.containing(x, y, z);
+					NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
 						@Override
-						public ITextComponent getDisplayName() {
-							return new StringTextComponent("Launcher");
+						public Component getDisplayName() {
+							return Component.literal("Launcher");
 						}
 
 						@Override
-						public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
-							return new LauncherGui.GuiContainerMod(id, inventory, new PacketBuffer(Unpooled.buffer()).writeBlockPos(_bpos));
+						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+							return new LauncherMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 						}
 					}, _bpos);
 				}
 			}
-			if (!world.isRemote()) {
-				BlockPos _bp = new BlockPos(x, y, z);
-				TileEntity _tileEntity = world.getTileEntity(_bp);
+			if (!world.isClientSide()) {
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
-				if (_tileEntity != null)
-					_tileEntity.getTileData().putString("direction", "est");
-				if (world instanceof World)
-					((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
+				if (_blockEntity != null)
+					_blockEntity.getPersistentData().putString("direction", "est");
+				if (world instanceof Level _level)
+					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
-		} else if ((world.getBlockState(new BlockPos(x - 1, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 2, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 3, y, z + 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 1, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 2, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 3, y, z - 1))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 1, y, z))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 2, y, z))).getBlock() == PadBlock.block
-				&& (world.getBlockState(new BlockPos(x - 3, y, z))).getBlock() == PadBlock.block) {
+		} else if ((world.getBlockState(BlockPos.containing(x - 1, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x - 2, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x - 3, y, z + 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x - 1, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x - 2, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x - 3, y, z - 1))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x - 1, y, z))).getBlock() == BettermissilesModBlocks.PAD.get() && (world.getBlockState(BlockPos.containing(x - 2, y, z))).getBlock() == BettermissilesModBlocks.PAD.get()
+				&& (world.getBlockState(BlockPos.containing(x - 3, y, z))).getBlock() == BettermissilesModBlocks.PAD.get()) {
 			{
-				Entity _ent = entity;
-				if (_ent instanceof ServerPlayerEntity) {
-					BlockPos _bpos = new BlockPos(x, y, z);
-					NetworkHooks.openGui((ServerPlayerEntity) _ent, new INamedContainerProvider() {
+				if (entity instanceof ServerPlayer _ent) {
+					BlockPos _bpos = BlockPos.containing(x, y, z);
+					NetworkHooks.openScreen((ServerPlayer) _ent, new MenuProvider() {
 						@Override
-						public ITextComponent getDisplayName() {
-							return new StringTextComponent("Launcher");
+						public Component getDisplayName() {
+							return Component.literal("Launcher");
 						}
 
 						@Override
-						public Container createMenu(int id, PlayerInventory inventory, PlayerEntity player) {
-							return new LauncherGui.GuiContainerMod(id, inventory, new PacketBuffer(Unpooled.buffer()).writeBlockPos(_bpos));
+						public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+							return new LauncherMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(_bpos));
 						}
 					}, _bpos);
 				}
 			}
-			if (!world.isRemote()) {
-				BlockPos _bp = new BlockPos(x, y, z);
-				TileEntity _tileEntity = world.getTileEntity(_bp);
+			if (!world.isClientSide()) {
+				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
-				if (_tileEntity != null)
-					_tileEntity.getTileData().putString("direction", "ouest");
-				if (world instanceof World)
-					((World) world).notifyBlockUpdate(_bp, _bs, _bs, 3);
+				if (_blockEntity != null)
+					_blockEntity.getPersistentData().putString("direction", "ouest");
+				if (world instanceof Level _level)
+					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 		}
 	}

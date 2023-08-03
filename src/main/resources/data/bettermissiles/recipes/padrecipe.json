@@ -1,26 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
+  "category": "misc",
   "pattern": [
-    "012",
-    "345"
+    "HHH",
+    "III"
   ],
   "key": {
-    "0": {
+    "H": {
       "item": "minecraft:heavy_weighted_pressure_plate"
     },
-    "1": {
-      "item": "minecraft:heavy_weighted_pressure_plate"
-    },
-    "2": {
-      "item": "minecraft:heavy_weighted_pressure_plate"
-    },
-    "3": {
-      "item": "minecraft:iron_block"
-    },
-    "4": {
-      "item": "minecraft:iron_block"
-    },
-    "5": {
+    "I": {
       "item": "minecraft:iron_block"
     }
   },

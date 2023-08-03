@@ -1,5 +1,5 @@
 {
-  "_fv": 28,
+  "_fv": 43,
   "_type": "gui",
   "definition": {
     "type": 1,
@@ -14,9 +14,9 @@
         "type": "textfield",
         "data": {
           "placeholder": "x",
+          "name": "xm",
           "width": 120,
           "height": 20,
-          "name": "xm",
           "x": 203,
           "y": 60
         }
@@ -25,9 +25,9 @@
         "type": "textfield",
         "data": {
           "placeholder": "z",
+          "name": "zm",
           "width": 120,
           "height": 20,
-          "name": "zm",
           "x": 202,
           "y": 93
         }
@@ -35,13 +35,13 @@
       {
         "type": "button",
         "data": {
+          "name": "button_set_x",
           "text": "set x",
           "onClick": {
             "name": "Setx"
           },
           "width": 30,
           "height": 20,
-          "name": "set x",
           "x": 322,
           "y": 60
         }
@@ -49,28 +49,15 @@
       {
         "type": "button",
         "data": {
+          "name": "button_set_z",
           "text": "set z",
           "onClick": {
             "name": "Setz"
           },
           "width": 30,
           "height": 20,
-          "name": "set z",
           "x": 322,
           "y": 93
-        }
-      },
-      {
-        "type": "label",
-        "data": {
-          "text": "x: <VAR:xm> z: <VAR:zm>",
-          "color": {
-            "value": -12829636,
-            "falpha": 0.0
-          },
-          "name": "x: <VAR:xm> z: <VAR:zm>",
-          "x": 204,
-          "y": 48
         }
       },
       {
@@ -79,10 +66,14 @@
           "inputLimit": {
             "value": ""
           },
+          "disablePlacement": {
+            "fixedValue": false
+          },
           "id": 0,
-          "disableStackInteraction": false,
+          "disablePickup": {
+            "fixedValue": false
+          },
           "dropItemsWhenNotBound": true,
-          "name": "Slot #0",
           "x": 132,
           "y": 79
         }
@@ -90,12 +81,14 @@
       {
         "type": "label",
         "data": {
-          "text": "Launchpad Controller",
+          "name": "label_launchpad_controller",
+          "text": {
+            "fixedValue": "Launchpad Controller"
+          },
           "color": {
             "value": -12829636,
             "falpha": 0.0
           },
-          "name": "Launchpad Controller",
           "x": 76,
           "y": 42
         }
@@ -103,13 +96,13 @@
       {
         "type": "button",
         "data": {
+          "name": "button_launch",
           "text": "Launch",
           "onClick": {
             "name": "Launch"
           },
           "width": 46,
           "height": 20,
-          "name": "Launch",
           "x": 300,
           "y": 176
         }
@@ -117,15 +110,47 @@
       {
         "type": "button",
         "data": {
-          "text": "place it",
+          "name": "button_place_it",
+          "text": "Place",
           "onClick": {
             "name": "Place"
           },
           "width": 46,
           "height": 20,
-          "name": "place it",
           "x": 300,
           "y": 137
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_x",
+          "text": {
+            "fixedValue": "",
+            "name": "X"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 188,
+          "y": 64
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_x1",
+          "text": {
+            "fixedValue": "",
+            "name": "Z"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 188,
+          "y": 99
         }
       }
     ],

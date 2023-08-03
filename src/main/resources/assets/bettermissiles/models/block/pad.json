@@ -1,13 +1,14 @@
 {
   "parent": "bettermissiles:custom/landing_pad_model",
   "textures": {
-    "all": "bettermissiles:blocks/landing_pad",
-    "particle": "bettermissiles:blocks/landing_pad",
-    "east": "bettermissiles:blocks/landing_pad",
-    "south": "bettermissiles:blocks/landing_pad",
-    "north": "bettermissiles:blocks/landing_pad",
-    "west": "bettermissiles:blocks/landing_pad",
-    "up": "bettermissiles:blocks/landing_pad",
-    "down": "bettermissiles:blocks/landing_pad"
-  }
+    "all": "bettermissiles:block/landing_pad",
+    "particle": "bettermissiles:block/landing_pad",
+    "east": "bettermissiles:block/landing_pad",
+    "south": "bettermissiles:block/landing_pad",
+    "north": "bettermissiles:block/landing_pad",
+    "west": "bettermissiles:block/landing_pad",
+    "up": "bettermissiles:block/landing_pad",
+    "down": "bettermissiles:block/landing_pad"
+  },
+  "render_type": "cutout_mipped"
 }

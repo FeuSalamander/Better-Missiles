@@ -1,7 +1,7 @@
 {
   "parent": "bettermissiles:custom/proxyitem",
   "textures": {
-    "0": "bettermissiles:blocks/proxyitem",
-    "particle": "bettermissiles:items/black"
+    "0": "bettermissiles:block/proxyitem",
+    "particle": "bettermissiles:item/black"
   }
 }

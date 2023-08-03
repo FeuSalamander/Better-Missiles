@@ -8,6 +8,9 @@
       "locked_code": false,
       "registry_name": "missiletest_entity_dies",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/MissiletestEntityDiesProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "x",
@@ -36,6 +39,9 @@
       "locked_code": false,
       "registry_name": "missiletest_on_entity_tick_update",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/MissiletestOnEntityTickUpdateProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -54,7 +60,14 @@
       "sortid": 5,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "launcher"
+      "registry_name": "launcher",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/world/inventory/LauncherMenu.java",
+          "src/main/java/net/feusalamander/bettermissiles/network/LauncherButtonMessage.java",
+          "src/main/java/net/feusalamander/bettermissiles/client/gui/LauncherScreen.java"
+        ]
+      }
     },
     {
       "name": "Setx",
@@ -64,6 +77,9 @@
       "locked_code": false,
       "registry_name": "setx",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/SetxProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "guistate",
@@ -84,6 +100,9 @@
       "locked_code": false,
       "registry_name": "setz",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/SetzProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "guistate",
@@ -102,7 +121,15 @@
       "sortid": 9,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "pad"
+      "registry_name": "pad",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/bettermissiles/models/item/pad.json",
+          "src/main/resources/assets/bettermissiles/models/block/pad.json",
+          "src/main/java/net/feusalamander/bettermissiles/block/PadBlock.java",
+          "src/main/resources/assets/bettermissiles/blockstates/pad.json"
+        ]
+      }
     },
     {
       "name": "Launchpadcontroller",
@@ -110,7 +137,16 @@
       "sortid": 10,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "launchpadcontroller"
+      "registry_name": "launchpadcontroller",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/block/entity/LaunchpadcontrollerBlockEntity.java",
+          "src/main/java/net/feusalamander/bettermissiles/block/LaunchpadcontrollerBlock.java",
+          "src/main/resources/assets/bettermissiles/models/item/launchpadcontroller.json",
+          "src/main/resources/assets/bettermissiles/blockstates/launchpadcontroller.json",
+          "src/main/resources/assets/bettermissiles/models/block/launchpadcontroller.json"
+        ]
+      }
     },
     {
       "name": "LaunchpadcontrollerOnBlockRightClicked",
@@ -120,6 +156,9 @@
       "locked_code": false,
       "registry_name": "launchpadcontroller_on_block_right_clicked",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/LaunchpadcontrollerOnBlockRightClickedProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -152,6 +191,9 @@
       "locked_code": false,
       "registry_name": "launch",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/LaunchProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -182,7 +224,13 @@
       "sortid": 13,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "oblivion"
+      "registry_name": "oblivion",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/OblivionItem.java",
+          "src/main/resources/assets/bettermissiles/models/item/oblivion.json"
+        ]
+      }
     },
     {
       "name": "MissiletestRightClickedOnEntity",
@@ -192,6 +240,9 @@
       "locked_code": false,
       "registry_name": "missiletest_right_clicked_on_entity",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/MissiletestRightClickedOnEntityProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -212,6 +263,9 @@
       "locked_code": false,
       "registry_name": "place",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/PlaceProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -242,7 +296,13 @@
       "sortid": 16,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "oblivionmissile"
+      "registry_name": "oblivionmissile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/entity/OblivionmissileEntity.java",
+          "src/main/java/net/feusalamander/bettermissiles/client/renderer/OblivionmissileRenderer.java"
+        ]
+      }
     },
     {
       "name": "Book",
@@ -252,6 +312,9 @@
       "locked_code": false,
       "registry_name": "book",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/BookProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -282,7 +345,12 @@
       "sortid": 18,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "controller"
+      "registry_name": "controller",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/bettermissiles/recipes/controller.json"
+        ]
+      }
     },
     {
       "name": "Padr",
@@ -290,7 +358,12 @@
       "sortid": 19,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "padr"
+      "registry_name": "padr",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/bettermissiles/recipes/padrecipe.json"
+        ]
+      }
     },
     {
       "name": "Bettermissiles",
@@ -298,7 +371,10 @@
       "sortid": 20,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "bettermissiles"
+      "registry_name": "bettermissiles",
+      "metadata": {
+        "files": []
+      }
     },
     {
       "name": "Golgot",
@@ -306,7 +382,13 @@
       "sortid": 21,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "golgot"
+      "registry_name": "golgot",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/GolgotItem.java",
+          "src/main/resources/assets/bettermissiles/models/item/golgot.json"
+        ]
+      }
     },
     {
       "name": "Golgotmissile",
@@ -314,7 +396,13 @@
       "sortid": 22,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "golgotmissile"
+      "registry_name": "golgotmissile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/entity/GolgotmissileEntity.java",
+          "src/main/java/net/feusalamander/bettermissiles/client/renderer/GolgotmissileRenderer.java"
+        ]
+      }
     },
     {
       "name": "Golgotrecup",
@@ -324,6 +412,9 @@
       "locked_code": false,
       "registry_name": "golgotrecup",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/GolgotrecupProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -344,6 +435,9 @@
       "locked_code": false,
       "registry_name": "golgotexplosion",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/GolgotexplosionProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "x",
@@ -370,7 +464,13 @@
       "sortid": 25,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "proxymissile"
+      "registry_name": "proxymissile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/client/renderer/ProxymissileRenderer.java",
+          "src/main/java/net/feusalamander/bettermissiles/entity/ProxymissileEntity.java"
+        ]
+      }
     },
     {
       "name": "Proxyexplosion",
@@ -380,6 +480,9 @@
       "locked_code": false,
       "registry_name": "proxyexplosion",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/ProxyexplosionProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "x",
@@ -408,6 +511,9 @@
       "locked_code": false,
       "registry_name": "proxyrecup",
       "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/ProxyrecupProcedure.java"
+        ],
         "dependencies": [
           {
             "name": "entity",
@@ -426,7 +532,59 @@
       "sortid": 28,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "proxy"
+      "registry_name": "proxy",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/ProxyItem.java",
+          "src/main/resources/assets/bettermissiles/models/item/proxy.json"
+        ]
+      }
+    },
+    {
+      "name": "X",
+      "type": "procedure",
+      "sortid": 29,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "x",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/XProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/variables"
+    },
+    {
+      "name": "Z",
+      "type": "procedure",
+      "sortid": 30,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "z",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/ZProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/variables"
     }
   ],
   "variable_elements": [
@@ -452,28 +610,39 @@
   "sound_elements": [],
   "language_map": {
     "en_us": {
-      "item.bettermissiles.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
       "block.missile_craft.launchpadcontroller": "Launchpad Controller",
+      "gui.bettermissiles.launcher.zm": "z",
+      "item_group.bettermissiles.bettermissiles": "Better Missiles",
       "item.bettermissiles.proxy": "Proxy Missile",
+      "gui.bettermissiles.launcher.button_set_x": "set x",
+      "gui.bettermissiles.launcher.button_place_it": "Place",
       "item.bettermissiles.oblivion": "Oblivion Missile",
-      "block.missile_craft.pad": "Launchpad",
+      "gui.bettermissiles.launcher.xm": "x",
       "item.missile_craft.oblivion": "Oblivion Missile",
+      "block.missile_craft.pad": "Launchpad",
       "entity.bettermissiles.oblivionmissile": "Oblivion",
       "entity.bettermissiles.golgotmissile": "Golgot",
-      "block.bettermissiles.pad": "Launch Pad",
+      "gui.bettermissiles.launcher.label_launchpad_controller": "Launchpad Controller",
       "entity.bettermissiles.proxymissile": "Proxy",
+      "block.bettermissiles.pad": "Launch Pad",
       "itemGroup.tabbettermissiles": "Better Missiles",
+      "gui.bettermissiles.launcher.button_launch": "Launch",
       "block.bettermissiles.launchpadcontroller": "Launchpad Controller",
-      "item.bettermissiles.golgotmissile_spawn_egg": "Golgot Spawn Egg",
       "item.bettermissiles.golgot": "Golgot Missile",
-      "item.bettermissiles.proxymissile_spawn_egg": "Proxy Spawn Egg",
+      "gui.bettermissiles.launcher.label_x_varxm_z_varzm": "x: \u003cVAR:xm\u003e z: \u003cVAR:zm\u003e",
       "item.missile_craft.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
+      "gui.bettermissiles.launcher.button_set_z": "set z",
       "entity.missile_craft.oblivionmissile": "Oblivion"
     }
   },
   "foldersRoot": {
     "name": "~",
-    "children": []
+    "children": [
+      {
+        "name": "variables",
+        "children": []
+      }
+    ]
   },
   "workspaceSettings": {
     "modid": "bettermissiles",
@@ -489,14 +658,11 @@
     "requiredMods": [],
     "dependencies": [],
     "dependants": [],
-    "mcreatorDependencies": [
-      "just_enough_items-1.16.5",
-      "patchouli-1.16.5"
-    ],
-    "currentGenerator": "forge-1.16.5",
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.19.4",
     "credits": "made by FeuSalamander",
     "modElementsPackage": "net.feusalamander.bettermissiles",
     "lockBaseModFiles": false
   },
-  "mcreatorVersion": 202200120510
+  "mcreatorVersion": 202300224119
 }

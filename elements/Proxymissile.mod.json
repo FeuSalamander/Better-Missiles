@@ -1,5 +1,5 @@
 {
-  "_fv": 28,
+  "_fv": 43,
   "_type": "livingentity",
   "definition": {
     "mobName": "Proxy",
@@ -50,8 +50,10 @@
     "attackKnockback": 0.0,
     "knockbackResistance": 1000.0,
     "movementSpeed": 0.0,
+    "stepHeight": 0.6,
     "armorBaseValue": 0.0,
     "trackingRange": 3,
+    "followRange": 16,
     "health": 1,
     "xpAmount": 0,
     "waterMob": false,
@@ -91,13 +93,6 @@
     "stepSound": {
       "value": ""
     },
-    "spawnParticles": false,
-    "particleToSpawn": {
-      "value": "SMOKE_NORMAL"
-    },
-    "particleSpawningShape": "Plane",
-    "particleSpawningRadious": 0.05,
-    "particleAmount": 50,
     "whenMobDies": {
       "name": "Proxyexplosion"
     },
@@ -118,6 +113,8 @@
       "value": ""
     },
     "rangedItemType": "Default item",
+    "rangedAttackInterval": 20,
+    "rangedAttackRadius": 10.0,
     "spawnThisMob": false,
     "doesDespawnWhenIdle": false,
     "spawningProbability": 20,
