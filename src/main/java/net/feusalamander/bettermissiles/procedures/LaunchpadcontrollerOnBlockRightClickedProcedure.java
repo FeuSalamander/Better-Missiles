@@ -149,6 +149,9 @@ public class LaunchpadcontrollerOnBlockRightClickedProcedure {
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
+		} else {
+			if (entity instanceof Player _player && !_player.level.isClientSide())
+				_player.displayClientMessage(Component.literal("The structure needs to be valid"), true);
 		}
 	}
 }

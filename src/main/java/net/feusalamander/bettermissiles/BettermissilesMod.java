@@ -29,6 +29,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
+import net.feusalamander.bettermissiles.init.BettermissilesModVillagerProfessions;
 import net.feusalamander.bettermissiles.init.BettermissilesModMenus;
 import net.feusalamander.bettermissiles.init.BettermissilesModItems;
 import net.feusalamander.bettermissiles.init.BettermissilesModEntities;
@@ -60,6 +61,7 @@ public class BettermissilesMod {
 
 		BettermissilesModMenus.REGISTRY.register(bus);
 
+		BettermissilesModVillagerProfessions.PROFESSIONS.register(bus);
 	}
 
 	private static final String PROTOCOL_VERSION = "1";

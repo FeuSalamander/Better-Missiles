@@ -1,0 +1,16 @@
+{
+  "_fv": 43,
+  "_type": "villagerprofession",
+  "definition": {
+    "displayName": "Explosive Enjoyer",
+    "pointOfInterest": {
+      "value": "Blocks.TNT"
+    },
+    "actionSound": {
+      "value": "entity.generic.explode"
+    },
+    "hat": "Full",
+    "professionTextureFile": "villager.png",
+    "zombifiedProfessionTextureFile": "villager.png"
+  }
+}

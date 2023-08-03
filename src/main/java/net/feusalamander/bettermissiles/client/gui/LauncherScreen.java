@@ -89,10 +89,10 @@ public class LauncherScreen extends AbstractContainerScreen<LauncherMenu> {
 		this.font.draw(poseStack, Component.translatable("gui.bettermissiles.launcher.label_launchpad_controller"), 5, 5, -12829636);
 		this.font.draw(poseStack,
 
-				XProcedure.execute(world, entity), 117, 27, -12829636);
+				XProcedure.execute(world, entity), 134, 13, -12829636);
 		this.font.draw(poseStack,
 
-				ZProcedure.execute(world), 117, 62, -12829636);
+				ZProcedure.execute(world), 133, 46, -12829636);
 	}
 
 	@Override

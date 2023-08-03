@@ -1,0 +1,51 @@
+{
+  "_fv": 43,
+  "_type": "villagertrade",
+  "definition": {
+    "tradeEntries": [
+      {
+        "villagerProfession": {
+          "value": "CUSTOM:Explosiveenjoyer"
+        },
+        "entries": [
+          {
+            "price1": {
+              "value": "Items.GUNPOWDER"
+            },
+            "countPrice1": 8,
+            "price2": {
+              "value": ""
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "Items.EMERALD"
+            },
+            "countOffer": 2,
+            "level": 1,
+            "maxTrades": 10,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Items.EMERALD"
+            },
+            "countPrice1": 2,
+            "price2": {
+              "value": "Blocks.SAND#0"
+            },
+            "countPrice2": 6,
+            "offer": {
+              "value": "Blocks.TNT"
+            },
+            "countOffer": 1,
+            "level": 1,
+            "maxTrades": 10,
+            "xp": 5,
+            "priceMultiplier": 0.05
+          }
+        ]
+      }
+    ]
+  }
+}
