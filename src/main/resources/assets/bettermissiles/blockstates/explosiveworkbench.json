@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "bettermissiles:block/explosiveworkbench"
+    },
+    "facing=east": {
+      "model": "bettermissiles:block/explosiveworkbench",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "bettermissiles:block/explosiveworkbench",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "bettermissiles:block/explosiveworkbench",
+      "y": 270
+    }
+  }
+}

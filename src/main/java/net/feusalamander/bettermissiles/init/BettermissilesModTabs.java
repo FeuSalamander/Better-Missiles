@@ -31,6 +31,7 @@ public class BettermissilesModTabs {
 					tabData.accept(BettermissilesModItems.OBLIVION.get());
 					tabData.accept(BettermissilesModItems.GOLGOT.get());
 					tabData.accept(BettermissilesModItems.PROXY.get());
+					tabData.accept(BettermissilesModBlocks.EXPLOSIVEWORKBENCH.get().asItem());
 				}).withSearchBar());
 	}
 }

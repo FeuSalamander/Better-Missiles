@@ -43,6 +43,24 @@
             "maxTrades": 10,
             "xp": 5,
             "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Blocks.TNT"
+            },
+            "countPrice1": 16,
+            "price2": {
+              "value": "Items.EMERALD"
+            },
+            "countPrice2": 48,
+            "offer": {
+              "value": "CUSTOM:Explosiveworkbench"
+            },
+            "countOffer": 1,
+            "level": 3,
+            "maxTrades": 1,
+            "xp": 30,
+            "priceMultiplier": 1.0
           }
         ]
       }

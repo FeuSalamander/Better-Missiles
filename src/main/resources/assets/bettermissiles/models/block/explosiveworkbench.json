@@ -1,0 +1,9 @@
+{
+  "parent": "bettermissiles:custom/explosiveworkbench",
+  "textures": {
+    "all": "bettermissiles:block/workbench",
+    "particle": "bettermissiles:block/workbench",
+    "0": "bettermissiles:block/workbench"
+  },
+  "render_type": "cutout_mipped"
+}

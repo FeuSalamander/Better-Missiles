@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "bettermissiles:pad",
-    "bettermissiles:launchpadcontroller"
+    "bettermissiles:launchpadcontroller",
+    "bettermissiles:explosiveworkbench",
+    "bettermissiles:workbench_top"
   ]
 }

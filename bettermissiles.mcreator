@@ -609,6 +609,137 @@
       "metadata": {
         "files": []
       }
+    },
+    {
+      "name": "Explosiveworkbench",
+      "type": "block",
+      "sortid": 33,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "explosiveworkbench",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/block/entity/ExplosiveworkbenchBlockEntity.java",
+          "src/main/resources/assets/bettermissiles/models/block/explosiveworkbench.json",
+          "src/main/java/net/feusalamander/bettermissiles/block/ExplosiveworkbenchBlock.java",
+          "src/main/resources/assets/bettermissiles/models/item/explosiveworkbench.json",
+          "src/main/resources/assets/bettermissiles/blockstates/explosiveworkbench.json"
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "PlaceWorkBench",
+      "type": "procedure",
+      "sortid": 34,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "place_work_bench",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/PlaceWorkBenchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "WorkbenchTop",
+      "type": "block",
+      "sortid": 35,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "workbench_top",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/bettermissiles/models/block/workbench_top.json",
+          "src/main/resources/assets/bettermissiles/blockstates/workbench_top.json",
+          "src/main/java/net/feusalamander/bettermissiles/block/WorkbenchTopBlock.java",
+          "src/main/resources/assets/bettermissiles/models/item/workbench_top.json"
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "BreakWorkBench",
+      "type": "procedure",
+      "sortid": 36,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "break_work_bench",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/BreakWorkBenchProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "WorkbenchTopBreak",
+      "type": "procedure",
+      "sortid": 37,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "workbench_top_break",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/WorkbenchTopBreakProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
     }
   ],
   "variable_elements": [
@@ -636,6 +767,7 @@
     "en_us": {
       "block.missile_craft.launchpadcontroller": "Launchpad Controller",
       "gui.bettermissiles.launcher.button_place_it": "Place",
+      "block.bettermissiles.explosiveworkbench": "Explosive Workbench",
       "block.missile_craft.pad": "Launchpad",
       "item.missile_craft.oblivion": "Oblivion Missile",
       "entity.bettermissiles.golgotmissile": "Golgot",
@@ -657,7 +789,8 @@
       "block.bettermissiles.pad": "Launch Pad",
       "entity.minecraft.villager.bettermissiles.explosiveenjoyer": "Explosive Enjoyer",
       "block.bettermissiles.launchpadcontroller": "Launchpad Controller",
-      "gui.bettermissiles.launcher.label_x_varxm_z_varzm": "x: \u003cVAR:xm\u003e z: \u003cVAR:zm\u003e"
+      "gui.bettermissiles.launcher.label_x_varxm_z_varzm": "x: \u003cVAR:xm\u003e z: \u003cVAR:zm\u003e",
+      "block.bettermissiles.workbench_top": "WorkbenchTop"
     }
   },
   "foldersRoot": {
@@ -665,6 +798,10 @@
     "children": [
       {
         "name": "variables",
+        "children": []
+      },
+      {
+        "name": "workbench",
         "children": []
       }
     ]

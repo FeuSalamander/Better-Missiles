@@ -22,6 +22,7 @@ public class BettermissilesModTrades {
 
 					new ItemStack(Items.EMERALD, 2), 10, 5, 0.05f));
 			event.getTrades().get(1).add(new BasicItemListing(new ItemStack(Items.EMERALD, 2), new ItemStack(Blocks.SAND, 6), new ItemStack(Blocks.TNT), 10, 5, 0.05f));
+			event.getTrades().get(3).add(new BasicItemListing(new ItemStack(Blocks.TNT, 16), new ItemStack(Items.EMERALD, 48), new ItemStack(BettermissilesModBlocks.EXPLOSIVEWORKBENCH.get()), 1, 30, 1f));
 		}
 	}
 }

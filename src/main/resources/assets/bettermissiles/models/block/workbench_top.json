@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "bettermissiles:block/workbenchtop",
+    "up": "bettermissiles:block/workbenchtop",
+    "north": "bettermissiles:block/workbenchtop",
+    "east": "bettermissiles:block/workbenchtop",
+    "south": "bettermissiles:block/workbenchtop",
+    "west": "bettermissiles:block/workbenchtop",
+    "particle": "bettermissiles:block/workbenchtop"
+  },
+  "render_type": "translucent"
+}
