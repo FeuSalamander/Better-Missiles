@@ -15,6 +15,9 @@ import net.minecraft.world.item.BlockItem;
 import net.feusalamander.bettermissiles.item.ProxyItem;
 import net.feusalamander.bettermissiles.item.OblivionItem;
 import net.feusalamander.bettermissiles.item.GolgotItem;
+import net.feusalamander.bettermissiles.item.BodyIronItem;
+import net.feusalamander.bettermissiles.item.BodyCopperItem;
+import net.feusalamander.bettermissiles.item.BodyCarbonItem;
 import net.feusalamander.bettermissiles.BettermissilesMod;
 
 public class BettermissilesModItems {
@@ -26,6 +29,9 @@ public class BettermissilesModItems {
 	public static final RegistryObject<Item> PROXY = REGISTRY.register("proxy", () -> new ProxyItem());
 	public static final RegistryObject<Item> EXPLOSIVEWORKBENCH = block(BettermissilesModBlocks.EXPLOSIVEWORKBENCH);
 	public static final RegistryObject<Item> WORKBENCH_TOP = block(BettermissilesModBlocks.WORKBENCH_TOP);
+	public static final RegistryObject<Item> BODY_COPPER = REGISTRY.register("body_copper", () -> new BodyCopperItem());
+	public static final RegistryObject<Item> BODY_CARBON = REGISTRY.register("body_carbon", () -> new BodyCarbonItem());
+	public static final RegistryObject<Item> BODY_IRON = REGISTRY.register("body_iron", () -> new BodyIronItem());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

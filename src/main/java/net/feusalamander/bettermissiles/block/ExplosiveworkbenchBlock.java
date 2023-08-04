@@ -1,9 +1,12 @@
 
 package net.feusalamander.bettermissiles.block;
 
+import net.minecraftforge.network.NetworkHooks;
+
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.material.PushReaction;
@@ -31,19 +34,27 @@ import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.Containers;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.feusalamander.bettermissiles.world.inventory.WorkBenchMenu;
 import net.feusalamander.bettermissiles.procedures.PlaceWorkBenchProcedure;
 import net.feusalamander.bettermissiles.procedures.BreakWorkBenchProcedure;
 import net.feusalamander.bettermissiles.block.entity.ExplosiveworkbenchBlockEntity;
 
 import java.util.List;
 import java.util.Collections;
+
+import io.netty.buffer.Unpooled;
 
 public class ExplosiveworkbenchBlock extends Block implements EntityBlock {
 	public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
@@ -149,6 +160,25 @@ public class ExplosiveworkbenchBlock extends Block implements EntityBlock {
 	public void wasExploded(Level world, BlockPos pos, Explosion e) {
 		super.wasExploded(world, pos, e);
 		BreakWorkBenchProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
+	}
+
+	@Override
+	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+		super.use(blockstate, world, pos, entity, hand, hit);
+		if (entity instanceof ServerPlayer player) {
+			NetworkHooks.openScreen(player, new MenuProvider() {
+				@Override
+				public Component getDisplayName() {
+					return Component.literal("Explosive Workbench");
+				}
+
+				@Override
+				public AbstractContainerMenu createMenu(int id, Inventory inventory, Player player) {
+					return new WorkBenchMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(pos));
+				}
+			}, pos);
+		}
+		return InteractionResult.SUCCESS;
 	}
 
 	@Override

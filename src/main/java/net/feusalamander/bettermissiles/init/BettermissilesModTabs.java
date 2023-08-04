@@ -32,6 +32,9 @@ public class BettermissilesModTabs {
 					tabData.accept(BettermissilesModItems.GOLGOT.get());
 					tabData.accept(BettermissilesModItems.PROXY.get());
 					tabData.accept(BettermissilesModBlocks.EXPLOSIVEWORKBENCH.get().asItem());
+					tabData.accept(BettermissilesModItems.BODY_COPPER.get());
+					tabData.accept(BettermissilesModItems.BODY_CARBON.get());
+					tabData.accept(BettermissilesModItems.BODY_IRON.get());
 				}).withSearchBar());
 	}
 }

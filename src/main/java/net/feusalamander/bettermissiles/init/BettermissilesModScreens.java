@@ -11,6 +11,7 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.client.gui.screens.MenuScreens;
 
+import net.feusalamander.bettermissiles.client.gui.WorkBenchScreen;
 import net.feusalamander.bettermissiles.client.gui.LauncherScreen;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
@@ -19,6 +20,7 @@ public class BettermissilesModScreens {
 	public static void clientLoad(FMLClientSetupEvent event) {
 		event.enqueueWork(() -> {
 			MenuScreens.register(BettermissilesModMenus.LAUNCHER.get(), LauncherScreen::new);
+			MenuScreens.register(BettermissilesModMenus.WORK_BENCH.get(), WorkBenchScreen::new);
 		});
 	}
 }

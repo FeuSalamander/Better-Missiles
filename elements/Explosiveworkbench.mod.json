@@ -107,13 +107,15 @@
     "breakHarvestLevel": 3,
     "isBonemealable": false,
     "hasInventory": true,
-    "guiBoundTo": "<NONE>",
+    "guiBoundTo": "WorkBench",
     "openGUIOnRightClick": true,
-    "inventorySize": 9,
+    "inventorySize": 4,
     "inventoryStackSize": 64,
     "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": true,
-    "inventoryOutSlotIDs": [],
+    "inventoryOutSlotIDs": [
+      3
+    ],
     "inventoryInSlotIDs": [],
     "hasEnergyStorage": false,
     "energyInitial": 0,

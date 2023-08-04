@@ -740,6 +740,167 @@
         ]
       },
       "path": "~/workbench"
+    },
+    {
+      "name": "WorkBench",
+      "type": "gui",
+      "sortid": 38,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "work_bench",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/client/gui/WorkBenchScreen.java",
+          "src/main/java/net/feusalamander/bettermissiles/network/WorkBenchSlotMessage.java",
+          "src/main/java/net/feusalamander/bettermissiles/world/inventory/WorkBenchMenu.java"
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "TryToCraft",
+      "type": "procedure",
+      "sortid": 39,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "try_to_craft",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/TryToCraftProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "Craft",
+      "type": "procedure",
+      "sortid": 40,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "craft",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/CraftProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "WorkbenchTopClicked",
+      "type": "procedure",
+      "sortid": 41,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "workbench_top_clicked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/WorkbenchTopClickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "BodyCopper",
+      "type": "item",
+      "sortid": 42,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "body_copper",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/BodyCopperItem.java",
+          "src/main/resources/assets/bettermissiles/models/item/body_copper.json"
+        ]
+      },
+      "path": "~/Component"
+    },
+    {
+      "name": "BodyCarbon",
+      "type": "item",
+      "sortid": 43,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "body_carbon",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/bettermissiles/models/item/body_carbon.json",
+          "src/main/java/net/feusalamander/bettermissiles/item/BodyCarbonItem.java"
+        ]
+      },
+      "path": "~/Component"
+    },
+    {
+      "name": "BodyIron",
+      "type": "item",
+      "sortid": 44,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "body_iron",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/bettermissiles/models/item/body_iron.json",
+          "src/main/java/net/feusalamander/bettermissiles/item/BodyIronItem.java"
+        ]
+      },
+      "path": "~/Component"
     }
   ],
   "variable_elements": [
@@ -767,11 +928,14 @@
     "en_us": {
       "block.missile_craft.launchpadcontroller": "Launchpad Controller",
       "gui.bettermissiles.launcher.button_place_it": "Place",
+      "item.bettermissiles.body_iron": "Missile Body (Iron)",
       "block.bettermissiles.explosiveworkbench": "Explosive Workbench",
       "block.missile_craft.pad": "Launchpad",
       "item.missile_craft.oblivion": "Oblivion Missile",
+      "item.bettermissiles.body_copper": "Missile Body (Copper)",
       "entity.bettermissiles.golgotmissile": "Golgot",
       "gui.bettermissiles.launcher.label_launchpad_controller": "Launchpad Controller",
+      "item.bettermissiles.body_carbon": "Missile Body (Carbon Fiber)",
       "itemGroup.tabbettermissiles": "Better Missiles",
       "gui.bettermissiles.launcher.button_launch": "Launch",
       "item.bettermissiles.golgot": "Golgot Missile",
@@ -802,6 +966,10 @@
       },
       {
         "name": "workbench",
+        "children": []
+      },
+      {
+        "name": "Component",
         "children": []
       }
     ]

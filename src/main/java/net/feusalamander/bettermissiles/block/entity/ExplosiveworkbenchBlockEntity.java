@@ -9,26 +9,29 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.entity.RandomizableContainerBlockEntity;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.feusalamander.bettermissiles.world.inventory.WorkBenchMenu;
 import net.feusalamander.bettermissiles.init.BettermissilesModBlockEntities;
 
 import javax.annotation.Nullable;
 
 import java.util.stream.IntStream;
 
+import io.netty.buffer.Unpooled;
+
 public class ExplosiveworkbenchBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(9, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
 	public ExplosiveworkbenchBlockEntity(BlockPos position, BlockState state) {
@@ -86,7 +89,7 @@ public class ExplosiveworkbenchBlockEntity extends RandomizableContainerBlockEnt
 
 	@Override
 	public AbstractContainerMenu createMenu(int id, Inventory inventory) {
-		return ChestMenu.threeRows(id, inventory);
+		return new WorkBenchMenu(id, inventory, new FriendlyByteBuf(Unpooled.buffer()).writeBlockPos(this.worldPosition));
 	}
 
 	@Override
@@ -106,6 +109,8 @@ public class ExplosiveworkbenchBlockEntity extends RandomizableContainerBlockEnt
 
 	@Override
 	public boolean canPlaceItem(int index, ItemStack stack) {
+		if (index == 3)
+			return false;
 		return true;
 	}
 

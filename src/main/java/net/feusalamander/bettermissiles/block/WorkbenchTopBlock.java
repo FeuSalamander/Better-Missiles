@@ -5,6 +5,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.level.pathfinder.BlockPathTypes;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.level.material.MaterialColor;
@@ -21,8 +22,12 @@ import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.Direction;
 import net.minecraft.core.BlockPos;
 
+import net.feusalamander.bettermissiles.procedures.WorkbenchTopClickedProcedure;
 import net.feusalamander.bettermissiles.procedures.WorkbenchTopBreakProcedure;
 import net.feusalamander.bettermissiles.init.BettermissilesModBlocks;
 
@@ -83,5 +88,19 @@ public class WorkbenchTopBlock extends Block {
 		boolean retval = super.onDestroyedByPlayer(blockstate, world, pos, entity, willHarvest, fluid);
 		WorkbenchTopBreakProcedure.execute(world, pos.getX(), pos.getY(), pos.getZ());
 		return retval;
+	}
+
+	@Override
+	public InteractionResult use(BlockState blockstate, Level world, BlockPos pos, Player entity, InteractionHand hand, BlockHitResult hit) {
+		super.use(blockstate, world, pos, entity, hand, hit);
+		int x = pos.getX();
+		int y = pos.getY();
+		int z = pos.getZ();
+		double hitX = hit.getLocation().x;
+		double hitY = hit.getLocation().y;
+		double hitZ = hit.getLocation().z;
+		Direction direction = hit.getDirection();
+		WorkbenchTopClickedProcedure.execute(world, x, y, z, entity);
+		return InteractionResult.SUCCESS;
 	}
 }

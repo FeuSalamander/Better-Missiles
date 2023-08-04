@@ -1,0 +1,7 @@
+{
+  "parent": "bettermissiles:custom/bodyiron",
+  "textures": {
+    "1": "bettermissiles:block/iron",
+    "particle": "bettermissiles:item/black"
+  }
+}
