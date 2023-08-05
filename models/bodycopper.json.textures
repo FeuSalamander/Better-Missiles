@@ -2,7 +2,7 @@
   "mappings": {
     "default": {
       "map": {
-        "1": "copper"
+        "2": "copper"
       },
       "name": "default"
     }

@@ -2,7 +2,7 @@
   "mappings": {
     "default": {
       "map": {
-        "2": "carbon"
+        "0": "tier1"
       },
       "name": "default"
     }

@@ -35,6 +35,9 @@ public class BettermissilesModTabs {
 					tabData.accept(BettermissilesModItems.BODY_COPPER.get());
 					tabData.accept(BettermissilesModItems.BODY_CARBON.get());
 					tabData.accept(BettermissilesModItems.BODY_IRON.get());
+					tabData.accept(BettermissilesModItems.NOZZLE_1.get());
+					tabData.accept(BettermissilesModItems.NOZZLE_2.get());
+					tabData.accept(BettermissilesModItems.NOZZLE_3.get());
 				}).withSearchBar());
 	}
 }

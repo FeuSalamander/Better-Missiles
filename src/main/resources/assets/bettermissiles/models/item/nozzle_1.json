@@ -1,0 +1,7 @@
+{
+  "parent": "bettermissiles:custom/nozzle1",
+  "textures": {
+    "0": "bettermissiles:block/tier1",
+    "particle": "bettermissiles:item/black"
+  }
+}

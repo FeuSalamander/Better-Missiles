@@ -901,6 +901,51 @@
         ]
       },
       "path": "~/Component"
+    },
+    {
+      "name": "Nozzle1",
+      "type": "item",
+      "sortid": 45,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozzle_1",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/Nozzle1Item.java",
+          "src/main/resources/assets/bettermissiles/models/item/nozzle_1.json"
+        ]
+      },
+      "path": "~/Component"
+    },
+    {
+      "name": "Nozzle2",
+      "type": "item",
+      "sortid": 46,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozzle_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/bettermissiles/models/item/nozzle_2.json",
+          "src/main/java/net/feusalamander/bettermissiles/item/Nozzle2Item.java"
+        ]
+      },
+      "path": "~/Component"
+    },
+    {
+      "name": "Nozzle3",
+      "type": "item",
+      "sortid": 47,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "nozzle_3",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/Nozzle3Item.java",
+          "src/main/resources/assets/bettermissiles/models/item/nozzle_3.json"
+        ]
+      },
+      "path": "~/Component"
     }
   ],
   "variable_elements": [
@@ -929,10 +974,10 @@
       "block.missile_craft.launchpadcontroller": "Launchpad Controller",
       "gui.bettermissiles.launcher.button_place_it": "Place",
       "item.bettermissiles.body_iron": "Missile Body (Iron)",
-      "block.bettermissiles.explosiveworkbench": "Explosive Workbench",
-      "block.missile_craft.pad": "Launchpad",
-      "item.missile_craft.oblivion": "Oblivion Missile",
       "item.bettermissiles.body_copper": "Missile Body (Copper)",
+      "item.missile_craft.oblivion": "Oblivion Missile",
+      "block.missile_craft.pad": "Launchpad",
+      "block.bettermissiles.explosiveworkbench": "Explosive Workbench",
       "entity.bettermissiles.golgotmissile": "Golgot",
       "gui.bettermissiles.launcher.label_launchpad_controller": "Launchpad Controller",
       "item.bettermissiles.body_carbon": "Missile Body (Carbon Fiber)",
@@ -953,8 +998,11 @@
       "block.bettermissiles.pad": "Launch Pad",
       "entity.minecraft.villager.bettermissiles.explosiveenjoyer": "Explosive Enjoyer",
       "block.bettermissiles.launchpadcontroller": "Launchpad Controller",
+      "item.bettermissiles.nozzle_3": "Missile Nozzle (Tier3)",
       "gui.bettermissiles.launcher.label_x_varxm_z_varzm": "x: \u003cVAR:xm\u003e z: \u003cVAR:zm\u003e",
-      "block.bettermissiles.workbench_top": "WorkbenchTop"
+      "block.bettermissiles.workbench_top": "WorkbenchTop",
+      "item.bettermissiles.nozzle_1": "Missile Nozzle (Tier1)",
+      "item.bettermissiles.nozzle_2": "Missile Nozzle (Tier2)"
     }
   },
   "foldersRoot": {
