@@ -23,7 +23,7 @@
           "disablePickup": {
             "fixedValue": false
           },
-          "dropItemsWhenNotBound": true,
+          "dropItemsWhenNotBound": false,
           "onSlotChanged": {
             "name": "TryToCraft"
           },
@@ -44,7 +44,7 @@
           "disablePickup": {
             "fixedValue": false
           },
-          "dropItemsWhenNotBound": true,
+          "dropItemsWhenNotBound": false,
           "onSlotChanged": {
             "name": "TryToCraft"
           },
@@ -65,7 +65,7 @@
           "disablePickup": {
             "fixedValue": false
           },
-          "dropItemsWhenNotBound": true,
+          "dropItemsWhenNotBound": false,
           "onSlotChanged": {
             "name": "TryToCraft"
           },
@@ -87,8 +87,29 @@
           "x": 244,
           "y": 68
         }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_explosive_workbench",
+          "text": {
+            "fixedValue": "Explosive Workbench"
+          },
+          "color": {
+            "value": -12829636,
+            "falpha": 0.0
+          },
+          "x": 129,
+          "y": 40
+        }
       }
     ],
+    "onTick": {
+      "name": "TryToCraft"
+    },
+    "onClosed": {
+      "name": "Clear"
+    },
     "gridSettings": {
       "sx": 18,
       "sy": 18,

@@ -2,7 +2,6 @@
 package net.feusalamander.bettermissiles.item;
 
 import net.minecraft.world.level.Level;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
@@ -11,20 +10,14 @@ import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
-public class ProxyItem extends Item {
-	public ProxyItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
-	}
-
-	@Override
-	public UseAnim getUseAnimation(ItemStack itemstack) {
-		return UseAnim.EAT;
+public class ProxyWarHeadItem extends Item {
+	public ProxyWarHeadItem() {
+		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
 	}
 
 	@Override
 	public void appendHoverText(ItemStack itemstack, Level world, List<Component> list, TooltipFlag flag) {
 		super.appendHoverText(itemstack, world, list, flag);
-		list.add(Component.literal("t1 missile"));
-		list.add(Component.literal("creates a small explosion"));
+		list.add(Component.literal("The warhead of the proxy missile"));
 	}
 }

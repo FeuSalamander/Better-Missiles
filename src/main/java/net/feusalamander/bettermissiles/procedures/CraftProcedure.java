@@ -1,11 +1,15 @@
 package net.feusalamander.bettermissiles.procedures;
 
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 
 public class CraftProcedure {
@@ -50,6 +54,13 @@ public class CraftProcedure {
 						((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _stk);
 					}
 				});
+			}
+		}
+		if (world instanceof Level _level) {
+			if (!_level.isClientSide()) {
+				_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("bettermissiles:wrench")), SoundSource.NEUTRAL, (float) 0.2, 1);
+			} else {
+				_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("bettermissiles:wrench")), SoundSource.NEUTRAL, (float) 0.2, 1, false);
 			}
 		}
 	}

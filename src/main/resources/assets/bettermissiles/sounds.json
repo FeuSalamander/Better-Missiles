@@ -1,0 +1,10 @@
+{
+  "wrench": {
+    "sounds": [
+      {
+        "name": "bettermissiles:wrench",
+        "stream": false
+      }
+    ]
+  }
+}

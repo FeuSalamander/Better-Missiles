@@ -30,6 +30,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
 
 import net.feusalamander.bettermissiles.init.BettermissilesModVillagerProfessions;
+import net.feusalamander.bettermissiles.init.BettermissilesModSounds;
 import net.feusalamander.bettermissiles.init.BettermissilesModMenus;
 import net.feusalamander.bettermissiles.init.BettermissilesModItems;
 import net.feusalamander.bettermissiles.init.BettermissilesModEntities;
@@ -53,7 +54,7 @@ public class BettermissilesMod {
 	public BettermissilesMod() {
 		MinecraftForge.EVENT_BUS.register(this);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
-
+		BettermissilesModSounds.REGISTRY.register(bus);
 		BettermissilesModBlocks.REGISTRY.register(bus);
 		BettermissilesModItems.REGISTRY.register(bus);
 		BettermissilesModEntities.REGISTRY.register(bus);

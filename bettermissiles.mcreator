@@ -86,6 +86,18 @@
             "type": "map"
           },
           {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
             "name": "world",
             "type": "world"
           }
@@ -107,6 +119,18 @@
           {
             "name": "guistate",
             "type": "map"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
           },
           {
             "name": "world",
@@ -470,7 +494,8 @@
           "src/main/java/net/feusalamander/bettermissiles/client/renderer/ProxymissileRenderer.java",
           "src/main/java/net/feusalamander/bettermissiles/entity/ProxymissileEntity.java"
         ]
-      }
+      },
+      "path": "~/Proxy"
     },
     {
       "name": "Proxyexplosion",
@@ -501,7 +526,8 @@
             "type": "world"
           }
         ]
-      }
+      },
+      "path": "~/Proxy"
     },
     {
       "name": "Proxyrecup",
@@ -524,21 +550,8 @@
             "type": "entity"
           }
         ]
-      }
-    },
-    {
-      "name": "Proxy",
-      "type": "item",
-      "sortid": 28,
-      "compiles": true,
-      "locked_code": false,
-      "registry_name": "proxy",
-      "metadata": {
-        "files": [
-          "src/main/java/net/feusalamander/bettermissiles/item/ProxyItem.java",
-          "src/main/resources/assets/bettermissiles/models/item/proxy.json"
-        ]
-      }
+      },
+      "path": "~/Proxy"
     },
     {
       "name": "X",
@@ -554,8 +567,16 @@
         ],
         "dependencies": [
           {
-            "name": "entity",
-            "type": "entity"
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
           },
           {
             "name": "world",
@@ -578,6 +599,18 @@
           "src/main/java/net/feusalamander/bettermissiles/procedures/ZProcedure.java"
         ],
         "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
           {
             "name": "world",
             "type": "world"
@@ -946,34 +979,166 @@
         ]
       },
       "path": "~/Component"
+    },
+    {
+      "name": "ProxyItem",
+      "type": "item",
+      "sortid": 48,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "proxy_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/ProxyItemItem.java",
+          "src/main/resources/assets/bettermissiles/models/item/proxy_item.json"
+        ]
+      },
+      "path": "~/Proxy"
+    },
+    {
+      "name": "ProxyWarHead",
+      "type": "item",
+      "sortid": 49,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "proxy_war_head",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/ProxyWarHeadItem.java",
+          "src/main/resources/assets/bettermissiles/models/item/proxy_war_head.json"
+        ]
+      },
+      "path": "~/Proxy"
+    },
+    {
+      "name": "Clear",
+      "type": "procedure",
+      "sortid": 50,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "clear",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/ClearProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "Coordpaper",
+      "type": "item",
+      "sortid": 51,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "coordpaper",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/item/CoordpaperItem.java",
+          "src/main/resources/assets/bettermissiles/models/item/coordpaper.json"
+        ]
+      }
+    },
+    {
+      "name": "PaperClick",
+      "type": "procedure",
+      "sortid": 52,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "paper_click",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/PaperClickProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     }
   ],
   "variable_elements": [
-    {
-      "name": "xm",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
-    {
-      "name": "zm",
-      "type": "number",
-      "scope": "map",
-      "value": "0"
-    },
     {
       "name": "bookM",
       "type": "logic",
       "scope": "player_persistent",
       "value": "false"
+    },
+    {
+      "name": "missile",
+      "type": "itemstack",
+      "scope": "map",
+      "value": "ItemStack.EMPTY"
+    },
+    {
+      "name": "body",
+      "type": "itemstack",
+      "scope": "map",
+      "value": "ItemStack.EMPTY"
+    },
+    {
+      "name": "nuzzle",
+      "type": "itemstack",
+      "scope": "map",
+      "value": "ItemStack.EMPTY"
     }
   ],
-  "sound_elements": [],
+  "sound_elements": [
+    {
+      "name": "wrench",
+      "files": [
+        "wrench"
+      ],
+      "category": "neutral",
+      "subtitle": ""
+    }
+  ],
   "language_map": {
     "en_us": {
       "block.missile_craft.launchpadcontroller": "Launchpad Controller",
       "gui.bettermissiles.launcher.button_place_it": "Place",
+      "subtitles.wrench": "",
       "item.bettermissiles.body_iron": "Missile Body (Iron)",
+      "gui.bettermissiles.work_bench.label_explosive_workbench": "Explosive Workbench",
       "item.bettermissiles.body_copper": "Missile Body (Copper)",
       "item.missile_craft.oblivion": "Oblivion Missile",
       "block.missile_craft.pad": "Launchpad",
@@ -983,17 +1148,19 @@
       "item.bettermissiles.body_carbon": "Missile Body (Carbon Fiber)",
       "itemGroup.tabbettermissiles": "Better Missiles",
       "gui.bettermissiles.launcher.button_launch": "Launch",
+      "item.bettermissiles.coordpaper": "Localisation Paper",
       "item.bettermissiles.golgot": "Golgot Missile",
       "item.missile_craft.oblivionmissile_spawn_egg": "Oblivion Spawn Egg",
       "gui.bettermissiles.launcher.button_set_z": "set z",
       "entity.missile_craft.oblivionmissile": "Oblivion",
       "gui.bettermissiles.launcher.zm": "z",
       "item_group.bettermissiles.bettermissiles": "Better Missiles",
-      "item.bettermissiles.proxy": "Proxy Missile",
       "gui.bettermissiles.launcher.button_set_x": "set x",
       "item.bettermissiles.oblivion": "Oblivion Missile",
       "gui.bettermissiles.launcher.xm": "x",
       "entity.bettermissiles.oblivionmissile": "Oblivion",
+      "item.bettermissiles.proxy_item": "Proxy Missile",
+      "item.bettermissiles.proxy_war_head": "Proxy WarHead",
       "entity.bettermissiles.proxymissile": "Proxy",
       "block.bettermissiles.pad": "Launch Pad",
       "entity.minecraft.villager.bettermissiles.explosiveenjoyer": "Explosive Enjoyer",
@@ -1018,6 +1185,10 @@
       },
       {
         "name": "Component",
+        "children": []
+      },
+      {
+        "name": "Proxy",
         "children": []
       }
     ]

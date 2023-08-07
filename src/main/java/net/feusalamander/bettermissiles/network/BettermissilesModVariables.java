@@ -19,6 +19,7 @@ import net.minecraft.world.level.saveddata.SavedData;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.server.level.ServerPlayer;
@@ -135,8 +136,9 @@ public class BettermissilesModVariables {
 
 	public static class MapVariables extends SavedData {
 		public static final String DATA_NAME = "bettermissiles_mapvars";
-		public double xm = 0;
-		public double zm = 0;
+		public ItemStack missile = ItemStack.EMPTY;
+		public ItemStack body = ItemStack.EMPTY;
+		public ItemStack nuzzle = ItemStack.EMPTY;
 
 		public static MapVariables load(CompoundTag tag) {
 			MapVariables data = new MapVariables();
@@ -145,14 +147,16 @@ public class BettermissilesModVariables {
 		}
 
 		public void read(CompoundTag nbt) {
-			xm = nbt.getDouble("xm");
-			zm = nbt.getDouble("zm");
+			missile = ItemStack.of(nbt.getCompound("missile"));
+			body = ItemStack.of(nbt.getCompound("body"));
+			nuzzle = ItemStack.of(nbt.getCompound("nuzzle"));
 		}
 
 		@Override
 		public CompoundTag save(CompoundTag nbt) {
-			nbt.putDouble("xm", xm);
-			nbt.putDouble("zm", zm);
+			nbt.put("missile", missile.save(new CompoundTag()));
+			nbt.put("body", body.save(new CompoundTag()));
+			nbt.put("nuzzle", nuzzle.save(new CompoundTag()));
 			return nbt;
 		}
 

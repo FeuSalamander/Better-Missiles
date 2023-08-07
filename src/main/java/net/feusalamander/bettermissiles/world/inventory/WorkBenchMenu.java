@@ -4,6 +4,9 @@ package net.feusalamander.bettermissiles.world.inventory;
 import net.minecraftforge.items.SlotItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -18,6 +21,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
+import net.feusalamander.bettermissiles.procedures.TryToCraftProcedure;
+import net.feusalamander.bettermissiles.procedures.ClearProcedure;
 import net.feusalamander.bettermissiles.network.WorkBenchSlotMessage;
 import net.feusalamander.bettermissiles.init.BettermissilesModMenus;
 import net.feusalamander.bettermissiles.BettermissilesMod;
@@ -26,6 +31,7 @@ import java.util.function.Supplier;
 import java.util.Map;
 import java.util.HashMap;
 
+@Mod.EventBusSubscriber
 public class WorkBenchMenu extends AbstractContainerMenu implements Supplier<Map<Integer, Slot>> {
 	public final static HashMap<String, Object> guistate = new HashMap<>();
 	public final Level world;
@@ -233,15 +239,28 @@ public class WorkBenchMenu extends AbstractContainerMenu implements Supplier<Map
 	@Override
 	public void removed(Player playerIn) {
 		super.removed(playerIn);
+		ClearProcedure.execute(world, x, y, z);
 		if (!bound && playerIn instanceof ServerPlayer serverPlayer) {
 			if (!serverPlayer.isAlive() || serverPlayer.hasDisconnected()) {
 				for (int j = 0; j < internal.getSlots(); ++j) {
+					if (j == 0)
+						continue;
+					if (j == 1)
+						continue;
+					if (j == 2)
+						continue;
 					if (j == 3)
 						continue;
 					playerIn.drop(internal.extractItem(j, internal.getStackInSlot(j).getCount(), false), false);
 				}
 			} else {
 				for (int i = 0; i < internal.getSlots(); ++i) {
+					if (i == 0)
+						continue;
+					if (i == 1)
+						continue;
+					if (i == 2)
+						continue;
 					if (i == 3)
 						continue;
 					playerIn.getInventory().placeItemBackInInventory(internal.extractItem(i, internal.getStackInSlot(i).getCount(), false));
@@ -259,5 +278,17 @@ public class WorkBenchMenu extends AbstractContainerMenu implements Supplier<Map
 
 	public Map<Integer, Slot> get() {
 		return customSlots;
+	}
+
+	@SubscribeEvent
+	public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+		Player entity = event.player;
+		if (event.phase == TickEvent.Phase.END && entity.containerMenu instanceof WorkBenchMenu) {
+			Level world = entity.level;
+			double x = entity.getX();
+			double y = entity.getY();
+			double z = entity.getZ();
+			TryToCraftProcedure.execute(world, x, y, z);
+		}
 	}
 }

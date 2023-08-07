@@ -30,7 +30,6 @@ public class BettermissilesModTabs {
 					tabData.accept(BettermissilesModBlocks.LAUNCHPADCONTROLLER.get().asItem());
 					tabData.accept(BettermissilesModItems.OBLIVION.get());
 					tabData.accept(BettermissilesModItems.GOLGOT.get());
-					tabData.accept(BettermissilesModItems.PROXY.get());
 					tabData.accept(BettermissilesModBlocks.EXPLOSIVEWORKBENCH.get().asItem());
 					tabData.accept(BettermissilesModItems.BODY_COPPER.get());
 					tabData.accept(BettermissilesModItems.BODY_CARBON.get());
@@ -38,6 +37,9 @@ public class BettermissilesModTabs {
 					tabData.accept(BettermissilesModItems.NOZZLE_1.get());
 					tabData.accept(BettermissilesModItems.NOZZLE_2.get());
 					tabData.accept(BettermissilesModItems.NOZZLE_3.get());
+					tabData.accept(BettermissilesModItems.PROXY_ITEM.get());
+					tabData.accept(BettermissilesModItems.PROXY_WAR_HEAD.get());
+					tabData.accept(BettermissilesModItems.COORDPAPER.get());
 				}).withSearchBar());
 	}
 }

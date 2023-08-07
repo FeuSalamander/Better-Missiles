@@ -67,11 +67,11 @@ public class LauncherButtonMessage {
 			return;
 		if (buttonID == 0) {
 
-			SetxProcedure.execute(world, guistate);
+			SetxProcedure.execute(world, x, y, z, guistate);
 		}
 		if (buttonID == 1) {
 
-			SetzProcedure.execute(world, guistate);
+			SetzProcedure.execute(world, x, y, z, guistate);
 		}
 		if (buttonID == 2) {
 

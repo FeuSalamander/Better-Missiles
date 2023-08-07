@@ -1,0 +1,7 @@
+{
+  "parent": "bettermissiles:custom/proxyhead",
+  "textures": {
+    "0": "bettermissiles:block/proxyitem",
+    "particle": "bettermissiles:item/black"
+  }
+}

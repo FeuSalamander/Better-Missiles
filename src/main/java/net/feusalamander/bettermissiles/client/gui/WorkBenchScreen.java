@@ -66,6 +66,7 @@ public class WorkBenchScreen extends AbstractContainerScreen<WorkBenchMenu> {
 
 	@Override
 	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
+		this.font.draw(poseStack, Component.translatable("gui.bettermissiles.work_bench.label_explosive_workbench"), 3, 3, -12829636);
 	}
 
 	@Override
