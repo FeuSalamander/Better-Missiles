@@ -119,7 +119,7 @@ public class OblivionmissileEntity extends PathfinderMob {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		MissiletestOnEntityTickUpdateProcedure.execute(this.level, this);
+		MissiletestOnEntityTickUpdateProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	public static void init() {

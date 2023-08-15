@@ -1,6 +1,7 @@
 
 package net.feusalamander.bettermissiles.entity;
 
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.network.PlayMessages;
 import net.minecraftforge.network.NetworkHooks;
 
@@ -21,6 +22,8 @@ import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 
@@ -61,6 +64,11 @@ public class ProxymissileEntity extends PathfinderMob {
 	@Override
 	public boolean removeWhenFarAway(double distanceToClosestPlayer) {
 		return false;
+	}
+
+	@Override
+	public SoundEvent getAmbientSound() {
+		return ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("bettermissiles:launching"));
 	}
 
 	@Override
@@ -114,7 +122,7 @@ public class ProxymissileEntity extends PathfinderMob {
 	@Override
 	public void baseTick() {
 		super.baseTick();
-		MissiletestOnEntityTickUpdateProcedure.execute(this.level, this);
+		MissiletestOnEntityTickUpdateProcedure.execute(this.level, this.getX(), this.getY(), this.getZ(), this);
 	}
 
 	public static void init() {

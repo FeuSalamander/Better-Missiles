@@ -16,4 +16,5 @@ import net.feusalamander.bettermissiles.BettermissilesMod;
 public class BettermissilesModSounds {
 	public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, BettermissilesMod.MODID);
 	public static final RegistryObject<SoundEvent> WRENCH = REGISTRY.register("wrench", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("bettermissiles", "wrench")));
+	public static final RegistryObject<SoundEvent> LAUNCHING = REGISTRY.register("launching", () -> SoundEvent.createVariableRangeEvent(new ResourceLocation("bettermissiles", "launching")));
 }
