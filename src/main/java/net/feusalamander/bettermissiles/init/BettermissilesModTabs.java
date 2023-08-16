@@ -40,6 +40,9 @@ public class BettermissilesModTabs {
 					tabData.accept(BettermissilesModItems.PROXY_ITEM.get());
 					tabData.accept(BettermissilesModItems.PROXY_WAR_HEAD.get());
 					tabData.accept(BettermissilesModItems.COORDPAPER.get());
+					tabData.accept(BettermissilesModItems.NOZZLETEMPLATE_1.get());
+					tabData.accept(BettermissilesModItems.NOZZLETEMPLATE_2.get());
+					tabData.accept(BettermissilesModItems.NOZZLETEMPLATE_3.get());
 				}).withSearchBar());
 	}
 }

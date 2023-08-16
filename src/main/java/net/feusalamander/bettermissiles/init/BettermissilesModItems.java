@@ -15,6 +15,9 @@ import net.minecraft.world.item.BlockItem;
 import net.feusalamander.bettermissiles.item.ProxyWarHeadItem;
 import net.feusalamander.bettermissiles.item.ProxyItemItem;
 import net.feusalamander.bettermissiles.item.OblivionItem;
+import net.feusalamander.bettermissiles.item.Nozzletemplate3Item;
+import net.feusalamander.bettermissiles.item.Nozzletemplate2Item;
+import net.feusalamander.bettermissiles.item.Nozzletemplate1Item;
 import net.feusalamander.bettermissiles.item.Nozzle3Item;
 import net.feusalamander.bettermissiles.item.Nozzle2Item;
 import net.feusalamander.bettermissiles.item.Nozzle1Item;
@@ -42,6 +45,9 @@ public class BettermissilesModItems {
 	public static final RegistryObject<Item> PROXY_ITEM = REGISTRY.register("proxy_item", () -> new ProxyItemItem());
 	public static final RegistryObject<Item> PROXY_WAR_HEAD = REGISTRY.register("proxy_war_head", () -> new ProxyWarHeadItem());
 	public static final RegistryObject<Item> COORDPAPER = REGISTRY.register("coordpaper", () -> new CoordpaperItem());
+	public static final RegistryObject<Item> NOZZLETEMPLATE_1 = REGISTRY.register("nozzletemplate_1", () -> new Nozzletemplate1Item());
+	public static final RegistryObject<Item> NOZZLETEMPLATE_2 = REGISTRY.register("nozzletemplate_2", () -> new Nozzletemplate2Item());
+	public static final RegistryObject<Item> NOZZLETEMPLATE_3 = REGISTRY.register("nozzletemplate_3", () -> new Nozzletemplate3Item());
 
 	private static RegistryObject<Item> block(RegistryObject<Block> block) {
 		return REGISTRY.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));

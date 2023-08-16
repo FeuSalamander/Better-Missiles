@@ -1,0 +1,48 @@
+{
+  "_fv": 43,
+  "_type": "recipe",
+  "definition": {
+    "recipeType": "Crafting",
+    "recipeRetstackSize": 1,
+    "group": "",
+    "cookingBookCategory": "MISC",
+    "xpReward": 0.0,
+    "cookingTime": 200,
+    "craftingBookCategory": "EQUIPMENT",
+    "recipeShapeless": false,
+    "recipeSlots": [
+      {
+        "value": "Blocks.PACKED_ICE"
+      },
+      {
+        "value": "Items.END_CRYSTAL"
+      },
+      {
+        "value": "Blocks.PACKED_ICE"
+      },
+      {
+        "value": "Items.FLINT_AND_STEEL"
+      },
+      {
+        "value": "CUSTOM:Nozzletemplate2"
+      },
+      {
+        "value": "Items.FLINT_AND_STEEL"
+      },
+      {
+        "value": "CUSTOM:Nozzle1"
+      },
+      {
+        "value": "CUSTOM:Nozzle1"
+      },
+      {
+        "value": "CUSTOM:Nozzle1"
+      }
+    ],
+    "recipeReturnStack": {
+      "value": "CUSTOM:Nozzle2"
+    },
+    "name": "tier_2_nozzle",
+    "namespace": "mod"
+  }
+}

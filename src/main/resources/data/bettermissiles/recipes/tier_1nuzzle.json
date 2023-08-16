@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "PBP",
+    "FNF",
+    "ILI"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:packed_ice"
+    },
+    "B": {
+      "item": "minecraft:brewing_stand"
+    },
+    "F": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "N": {
+      "item": "bettermissiles:nozzletemplate_1"
+    },
+    "I": {
+      "item": "minecraft:iron_block"
+    },
+    "L": {
+      "item": "minecraft:lava_bucket"
+    }
+  },
+  "result": {
+    "item": "bettermissiles:nozzle_1",
+    "count": 1
+  }
+}

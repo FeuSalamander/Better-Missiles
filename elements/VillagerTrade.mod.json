@@ -61,6 +61,186 @@
             "maxTrades": 1,
             "xp": 30,
             "priceMultiplier": 1.0
+          },
+          {
+            "price1": {
+              "value": "Items.COPPER_INGOT"
+            },
+            "countPrice1": 64,
+            "price2": {
+              "value": "Items.EMERALD"
+            },
+            "countPrice2": 32,
+            "offer": {
+              "value": "CUSTOM:BodyCopper"
+            },
+            "countOffer": 1,
+            "level": 3,
+            "maxTrades": 2,
+            "xp": 20,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Blocks.IRON_BLOCK"
+            },
+            "countPrice1": 16,
+            "price2": {
+              "value": "Items.EMERALD"
+            },
+            "countPrice2": 64,
+            "offer": {
+              "value": "CUSTOM:BodyIron"
+            },
+            "countOffer": 1,
+            "level": 4,
+            "maxTrades": 2,
+            "xp": 30,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Blocks.COAL_BLOCK"
+            },
+            "countPrice1": 64,
+            "price2": {
+              "value": "Blocks.EMERALD_BLOCK"
+            },
+            "countPrice2": 14,
+            "offer": {
+              "value": "CUSTOM:BodyCarbon"
+            },
+            "countOffer": 1,
+            "level": 5,
+            "maxTrades": 2,
+            "xp": 40,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Items.PAPER"
+            },
+            "countPrice1": 64,
+            "price2": {
+              "value": "Items.GUNPOWDER"
+            },
+            "countPrice2": 64,
+            "offer": {
+              "value": "CUSTOM:Nozzletemplate1"
+            },
+            "countOffer": 1,
+            "level": 3,
+            "maxTrades": 2,
+            "xp": 20,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:Nozzletemplate1"
+            },
+            "countPrice1": 1,
+            "price2": {
+              "value": "Items.EMERALD"
+            },
+            "countPrice2": 64,
+            "offer": {
+              "value": "CUSTOM:Nozzletemplate2"
+            },
+            "countOffer": 1,
+            "level": 4,
+            "maxTrades": 2,
+            "xp": 30,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "CUSTOM:Nozzletemplate2"
+            },
+            "countPrice1": 1,
+            "price2": {
+              "value": "Blocks.EMERALD_BLOCK"
+            },
+            "countPrice2": 20,
+            "offer": {
+              "value": "CUSTOM:Nozzletemplate3"
+            },
+            "countOffer": 1,
+            "level": 5,
+            "maxTrades": 2,
+            "xp": 40,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Items.FIRE_CHARGE"
+            },
+            "countPrice1": 3,
+            "price2": {
+              "value": "Blocks.TNT"
+            },
+            "countPrice2": 2,
+            "offer": {
+              "value": "Items.FIREWORKS"
+            },
+            "countOffer": 16,
+            "level": 3,
+            "maxTrades": 20,
+            "xp": 10,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Items.TOTEM_OF_UNDYING"
+            },
+            "countPrice1": 1,
+            "price2": {
+              "value": "Items.TOTEM_OF_UNDYING"
+            },
+            "countPrice2": 1,
+            "offer": {
+              "value": "Items.TOTEM_OF_UNDYING"
+            },
+            "countOffer": 1,
+            "level": 3,
+            "maxTrades": 10,
+            "xp": 30,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Items.LAVA_BUCKET"
+            },
+            "countPrice1": 1,
+            "price2": {
+              "value": "Items.EMERALD"
+            },
+            "countPrice2": 10,
+            "offer": {
+              "value": "Items.BLAZE_ROD"
+            },
+            "countOffer": 1,
+            "level": 4,
+            "maxTrades": 10,
+            "xp": 10,
+            "priceMultiplier": 0.05
+          },
+          {
+            "price1": {
+              "value": "Items.ENDER_PEARL"
+            },
+            "countPrice1": 2,
+            "price2": {
+              "value": "Items.BLAZE_POWDER"
+            },
+            "countPrice2": 4,
+            "offer": {
+              "value": "Blocks.END_STONE"
+            },
+            "countOffer": 16,
+            "level": 4,
+            "maxTrades": 10,
+            "xp": 10,
+            "priceMultiplier": 0.05
           }
         ]
       }

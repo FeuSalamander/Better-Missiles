@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "PNP",
+    "FOF",
+    "ZZZ"
+  ],
+  "key": {
+    "P": {
+      "item": "minecraft:packed_ice"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    },
+    "F": {
+      "item": "minecraft:flint_and_steel"
+    },
+    "O": {
+      "item": "bettermissiles:nozzletemplate_3"
+    },
+    "Z": {
+      "item": "bettermissiles:nozzle_2"
+    }
+  },
+  "result": {
+    "item": "bettermissiles:nozzle_3",
+    "count": 1
+  }
+}
