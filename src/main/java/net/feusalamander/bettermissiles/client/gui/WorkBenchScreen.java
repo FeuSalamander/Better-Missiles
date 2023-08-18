@@ -3,11 +3,15 @@ package net.feusalamander.bettermissiles.client.gui;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.chat.Component;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 
 import net.feusalamander.bettermissiles.world.inventory.WorkBenchMenu;
+import net.feusalamander.bettermissiles.procedures.EntityreturnbooleanProcedure;
+import net.feusalamander.bettermissiles.procedures.EntityreturnProcedure;
 
 import java.util.HashMap;
 
@@ -27,7 +31,7 @@ public class WorkBenchScreen extends AbstractContainerScreen<WorkBenchMenu> {
 		this.y = container.y;
 		this.z = container.z;
 		this.entity = container.entity;
-		this.imageWidth = 176;
+		this.imageWidth = 309;
 		this.imageHeight = 166;
 	}
 
@@ -38,6 +42,10 @@ public class WorkBenchScreen extends AbstractContainerScreen<WorkBenchMenu> {
 		this.renderBackground(ms);
 		super.render(ms, mouseX, mouseY, partialTicks);
 		this.renderTooltip(ms, mouseX, mouseY);
+		if (EntityreturnProcedure.execute(world, x, y, z) instanceof LivingEntity livingEntity) {
+			if (EntityreturnbooleanProcedure.execute(world, x, y, z))
+				InventoryScreen.renderEntityInInventoryFollowsAngle(ms, this.leftPos + 271, this.topPos + 137, 30, 0f + (float) Math.atan((this.leftPos + 271 - mouseX) / 40.0), (float) Math.atan((this.topPos + 87 - mouseY) / 40.0), livingEntity);
+		}
 	}
 
 	@Override
@@ -66,7 +74,7 @@ public class WorkBenchScreen extends AbstractContainerScreen<WorkBenchMenu> {
 
 	@Override
 	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
-		this.font.draw(poseStack, Component.translatable("gui.bettermissiles.work_bench.label_explosive_workbench"), 3, 3, -12829636);
+		this.font.draw(poseStack, Component.translatable("gui.bettermissiles.work_bench.label_explosive_workbench"), 4, 3, -12829636);
 	}
 
 	@Override

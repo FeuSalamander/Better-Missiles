@@ -3,7 +3,7 @@
   "_type": "gui",
   "definition": {
     "type": 1,
-    "width": 176,
+    "width": 309,
     "height": 166,
     "inventoryOffsetX": 0,
     "inventoryOffsetY": 0,
@@ -99,8 +99,24 @@
             "value": -12829636,
             "falpha": 0.0
           },
-          "x": 129,
+          "x": 63,
           "y": 40
+        }
+      },
+      {
+        "type": "entitymodel",
+        "data": {
+          "entityModel": {
+            "name": "Entityreturn"
+          },
+          "displayCondition": {
+            "name": "Entityreturnboolean"
+          },
+          "scale": 30,
+          "rotationX": 0,
+          "followMouseMovement": true,
+          "x": 319,
+          "y": 153
         }
       }
     ],

@@ -125,6 +125,31 @@ public class TryToCraftProcedure {
 							});
 						}
 					}
+				} else if ((new Object() {
+					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
+						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
+						BlockEntity _ent = world.getBlockEntity(pos);
+						if (_ent != null)
+							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
+						return _retval.get();
+					}
+				}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == BettermissilesModItems.POLARIS_WAR_HEAD.get()) {
+					BettermissilesModVariables.MapVariables.get(world).missile = new ItemStack(BettermissilesModItems.POLARIS_ITEM.get());
+					BettermissilesModVariables.MapVariables.get(world).syncData(world);
+					BettermissilesModVariables.MapVariables.get(world).missile.getOrCreateTag().putDouble("missile_speed", (BettermissilesModVariables.MapVariables.get(world).body.getOrCreateTag().getDouble("missile_speed")));
+					BettermissilesModVariables.MapVariables.get(world).missile.getOrCreateTag().putDouble("missile_distance", (BettermissilesModVariables.MapVariables.get(world).nuzzle.getOrCreateTag().getDouble("missile_distance")));
+					{
+						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						if (_ent != null) {
+							final int _slotid = 3;
+							final ItemStack _setstack = BettermissilesModVariables.MapVariables.get(world).missile;
+							_setstack.setCount(1);
+							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+								if (capability instanceof IItemHandlerModifiable)
+									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
+							});
+						}
+					}
 				} else {
 					{
 						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));

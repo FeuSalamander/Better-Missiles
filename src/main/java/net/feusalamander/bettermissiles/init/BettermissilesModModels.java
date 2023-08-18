@@ -11,6 +11,7 @@ import net.minecraftforge.api.distmarker.Dist;
 
 import net.feusalamander.bettermissiles.client.model.Modelvillager;
 import net.feusalamander.bettermissiles.client.model.Modelproxy;
+import net.feusalamander.bettermissiles.client.model.Modelpolarismissilemodel;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class BettermissilesModModels {
@@ -18,5 +19,6 @@ public class BettermissilesModModels {
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
 		event.registerLayerDefinition(Modelvillager.LAYER_LOCATION, Modelvillager::createBodyLayer);
 		event.registerLayerDefinition(Modelproxy.LAYER_LOCATION, Modelproxy::createBodyLayer);
+		event.registerLayerDefinition(Modelpolarismissilemodel.LAYER_LOCATION, Modelpolarismissilemodel::createBodyLayer);
 	}
 }

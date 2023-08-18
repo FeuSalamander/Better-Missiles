@@ -83,28 +83,28 @@ public class WorkBenchMenu extends AbstractContainerMenu implements Supplier<Map
 				}
 			}
 		}
-		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 28, 15) {
+		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 95, 15) {
 			@Override
 			public void setChanged() {
 				super.setChanged();
 				slotChanged(0, 0, 0);
 			}
 		}));
-		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 28, 33) {
+		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 95, 33) {
 			@Override
 			public void setChanged() {
 				super.setChanged();
 				slotChanged(1, 0, 0);
 			}
 		}));
-		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 28, 51) {
+		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 95, 51) {
 			@Override
 			public void setChanged() {
 				super.setChanged();
 				slotChanged(2, 0, 0);
 			}
 		}));
-		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 119, 32) {
+		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 186, 32) {
 			@Override
 			public void onTake(Player entity, ItemStack stack) {
 				super.onTake(entity, stack);
@@ -118,9 +118,9 @@ public class WorkBenchMenu extends AbstractContainerMenu implements Supplier<Map
 		}));
 		for (int si = 0; si < 3; ++si)
 			for (int sj = 0; sj < 9; ++sj)
-				this.addSlot(new Slot(inv, sj + (si + 1) * 9, 0 + 8 + sj * 18, 0 + 84 + si * 18));
+				this.addSlot(new Slot(inv, sj + (si + 1) * 9, 66 + 8 + sj * 18, 0 + 84 + si * 18));
 		for (int si = 0; si < 9; ++si)
-			this.addSlot(new Slot(inv, si, 0 + 8 + si * 18, 0 + 142));
+			this.addSlot(new Slot(inv, si, 66 + 8 + si * 18, 0 + 142));
 	}
 
 	@Override

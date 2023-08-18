@@ -10,6 +10,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.feusalamander.bettermissiles.client.renderer.ProxymissileRenderer;
+import net.feusalamander.bettermissiles.client.renderer.PolarismissileRenderer;
 import net.feusalamander.bettermissiles.client.renderer.OblivionmissileRenderer;
 import net.feusalamander.bettermissiles.client.renderer.GolgotmissileRenderer;
 
@@ -20,5 +21,6 @@ public class BettermissilesModEntityRenderers {
 		event.registerEntityRenderer(BettermissilesModEntities.OBLIVIONMISSILE.get(), OblivionmissileRenderer::new);
 		event.registerEntityRenderer(BettermissilesModEntities.GOLGOTMISSILE.get(), GolgotmissileRenderer::new);
 		event.registerEntityRenderer(BettermissilesModEntities.PROXYMISSILE.get(), ProxymissileRenderer::new);
+		event.registerEntityRenderer(BettermissilesModEntities.POLARISMISSILE.get(), PolarismissileRenderer::new);
 	}
 }

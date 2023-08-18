@@ -43,6 +43,8 @@ public class BettermissilesModTabs {
 					tabData.accept(BettermissilesModItems.NOZZLETEMPLATE_1.get());
 					tabData.accept(BettermissilesModItems.NOZZLETEMPLATE_2.get());
 					tabData.accept(BettermissilesModItems.NOZZLETEMPLATE_3.get());
+					tabData.accept(BettermissilesModItems.POLARIS_ITEM.get());
+					tabData.accept(BettermissilesModItems.POLARIS_WAR_HEAD.get());
 				}).withSearchBar());
 	}
 }

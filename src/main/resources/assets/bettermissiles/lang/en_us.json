@@ -1,5 +1,6 @@
 {
   "block.missile_craft.launchpadcontroller": "Launchpad Controller",
+  "entity.bettermissiles.polarismissile": "Polaris",
   "gui.bettermissiles.launcher.button_place_it": "Place",
   "subtitles.wrench": "",
   "item.bettermissiles.body_iron": "Missile Body (Iron)",
@@ -11,6 +12,7 @@
   "entity.bettermissiles.golgotmissile": "Golgot",
   "item.bettermissiles.nozzletemplate_1": "Nozzle Blueprint (tier 1)",
   "item.bettermissiles.nozzletemplate_2": "Nozzle Blueprint (tier 2)",
+  "item.bettermissiles.polaris_war_head": "Polaris WarHead",
   "item.bettermissiles.nozzletemplate_3": "Nozzle Blueprint (tier 3)",
   "gui.bettermissiles.launcher.label_launchpad_controller": "Launchpad Controller",
   "item.bettermissiles.body_carbon": "Missile Body (Carbon Fiber)",
@@ -26,6 +28,7 @@
   "item_group.bettermissiles.bettermissiles": "Better Missiles",
   "gui.bettermissiles.launcher.button_set_x": "set x",
   "item.bettermissiles.oblivion": "Oblivion Missile",
+  "item.bettermissiles.polaris_item": "Polaris Missile",
   "gui.bettermissiles.launcher.xm": "x",
   "entity.bettermissiles.oblivionmissile": "Oblivion",
   "item.bettermissiles.proxy_item": "Proxy Missile",

@@ -27,17 +27,17 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.Packet;
 
-import net.feusalamander.bettermissiles.procedures.ProxyrecupProcedure;
-import net.feusalamander.bettermissiles.procedures.ProxyexplosionProcedure;
+import net.feusalamander.bettermissiles.procedures.PolarisrecupProcedure;
+import net.feusalamander.bettermissiles.procedures.PolarisexplosionProcedure;
 import net.feusalamander.bettermissiles.procedures.MissiletestOnEntityTickUpdateProcedure;
 import net.feusalamander.bettermissiles.init.BettermissilesModEntities;
 
-public class ProxymissileEntity extends PathfinderMob {
-	public ProxymissileEntity(PlayMessages.SpawnEntity packet, Level world) {
-		this(BettermissilesModEntities.PROXYMISSILE.get(), world);
+public class PolarismissileEntity extends PathfinderMob {
+	public PolarismissileEntity(PlayMessages.SpawnEntity packet, Level world) {
+		this(BettermissilesModEntities.POLARISMISSILE.get(), world);
 	}
 
-	public ProxymissileEntity(EntityType<ProxymissileEntity> type, Level world) {
+	public PolarismissileEntity(EntityType<PolarismissileEntity> type, Level world) {
 		super(type, world);
 		maxUpStep = 0.6f;
 		xpReward = 0;
@@ -101,7 +101,7 @@ public class ProxymissileEntity extends PathfinderMob {
 	@Override
 	public void die(DamageSource source) {
 		super.die(source);
-		ProxyexplosionProcedure.execute(this.level, this.getX(), this.getY(), this.getZ());
+		PolarisexplosionProcedure.execute(this.level, this.getX(), this.getY(), this.getZ());
 	}
 
 	@Override
@@ -115,7 +115,7 @@ public class ProxymissileEntity extends PathfinderMob {
 		Entity entity = this;
 		Level world = this.level;
 
-		ProxyrecupProcedure.execute(entity, sourceentity);
+		PolarisrecupProcedure.execute(entity, sourceentity);
 		return retval;
 	}
 

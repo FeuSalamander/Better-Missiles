@@ -1,0 +1,7 @@
+{
+  "parent": "bettermissiles:custom/polaris",
+  "textures": {
+    "0": "bettermissiles:block/polaris",
+    "particle": "bettermissiles:item/black"
+  }
+}
