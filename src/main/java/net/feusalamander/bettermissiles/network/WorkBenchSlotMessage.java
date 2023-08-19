@@ -12,7 +12,9 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.core.BlockPos;
 
 import net.feusalamander.bettermissiles.world.inventory.WorkBenchMenu;
+import net.feusalamander.bettermissiles.procedures.WarHeadCraftProcedure;
 import net.feusalamander.bettermissiles.procedures.TryToCraftProcedure;
+import net.feusalamander.bettermissiles.procedures.InputProcedure;
 import net.feusalamander.bettermissiles.procedures.CraftProcedure;
 import net.feusalamander.bettermissiles.BettermissilesMod;
 
@@ -86,6 +88,14 @@ public class WorkBenchSlotMessage {
 		if (slotID == 3 && changeType == 1) {
 
 			CraftProcedure.execute(world, x, y, z);
+		}
+		if (slotID == 4 && changeType == 0) {
+
+			InputProcedure.execute(world, x, y, z);
+		}
+		if (slotID == 5 && changeType == 1) {
+
+			WarHeadCraftProcedure.execute(world, x, y, z, entity);
 		}
 	}
 

@@ -795,6 +795,7 @@
       "registry_name": "work_bench",
       "metadata": {
         "files": [
+          "src/main/java/net/feusalamander/bettermissiles/network/WorkBenchButtonMessage.java",
           "src/main/java/net/feusalamander/bettermissiles/client/gui/WorkBenchScreen.java",
           "src/main/java/net/feusalamander/bettermissiles/network/WorkBenchSlotMessage.java",
           "src/main/java/net/feusalamander/bettermissiles/world/inventory/WorkBenchMenu.java"
@@ -1338,6 +1339,269 @@
           "src/main/java/net/feusalamander/bettermissiles/procedures/EntityreturnbooleanProcedure.java"
         ],
         "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "Input",
+      "type": "procedure",
+      "sortid": 66,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "input",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/InputProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "Tntcount",
+      "type": "procedure",
+      "sortid": 67,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tntcount",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/TntcountProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/variables"
+    },
+    {
+      "name": "Blazecount",
+      "type": "procedure",
+      "sortid": 68,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blazecount",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/BlazecountProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/variables"
+    },
+    {
+      "name": "Starcount",
+      "type": "procedure",
+      "sortid": 69,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "starcount",
+      "metadata": {
+        "return_type": "string",
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/StarcountProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/variables"
+    },
+    {
+      "name": "Left",
+      "type": "procedure",
+      "sortid": 70,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "left",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/LeftProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "Right",
+      "type": "procedure",
+      "sortid": 71,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "right",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/RightProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "WarHeadShow",
+      "type": "procedure",
+      "sortid": 72,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "war_head_show",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/WarHeadShowProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/workbench"
+    },
+    {
+      "name": "WarHeadCraft",
+      "type": "procedure",
+      "sortid": 73,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "war_head_craft",
+      "metadata": {
+        "files": [
+          "src/main/java/net/feusalamander/bettermissiles/procedures/WarHeadCraftProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
           {
             "name": "x",
             "type": "number"

@@ -31,7 +31,7 @@ import java.util.stream.IntStream;
 import io.netty.buffer.Unpooled;
 
 public class ExplosiveworkbenchBlockEntity extends RandomizableContainerBlockEntity implements WorldlyContainer {
-	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(4, ItemStack.EMPTY);
+	private NonNullList<ItemStack> stacks = NonNullList.<ItemStack>withSize(6, ItemStack.EMPTY);
 	private final LazyOptional<? extends IItemHandler>[] handlers = SidedInvWrapper.create(this, Direction.values());
 
 	public ExplosiveworkbenchBlockEntity(BlockPos position, BlockState state) {
@@ -110,6 +110,8 @@ public class ExplosiveworkbenchBlockEntity extends RandomizableContainerBlockEnt
 	@Override
 	public boolean canPlaceItem(int index, ItemStack stack) {
 		if (index == 3)
+			return false;
+		if (index == 5)
 			return false;
 		return true;
 	}

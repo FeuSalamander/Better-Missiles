@@ -109,12 +109,13 @@
     "hasInventory": true,
     "guiBoundTo": "WorkBench",
     "openGUIOnRightClick": true,
-    "inventorySize": 4,
+    "inventorySize": 6,
     "inventoryStackSize": 64,
     "inventoryDropWhenDestroyed": true,
     "inventoryComparatorPower": true,
     "inventoryOutSlotIDs": [
-      3
+      3,
+      5
     ],
     "inventoryInSlotIDs": [],
     "hasEnergyStorage": false,

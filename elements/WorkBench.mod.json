@@ -27,8 +27,8 @@
           "onSlotChanged": {
             "name": "TryToCraft"
           },
-          "x": 153,
-          "y": 51
+          "x": 150,
+          "y": 57
         }
       },
       {
@@ -48,8 +48,8 @@
           "onSlotChanged": {
             "name": "TryToCraft"
           },
-          "x": 153,
-          "y": 69
+          "x": 150,
+          "y": 75
         }
       },
       {
@@ -69,8 +69,8 @@
           "onSlotChanged": {
             "name": "TryToCraft"
           },
-          "x": 153,
-          "y": 87
+          "x": 150,
+          "y": 93
         }
       },
       {
@@ -84,8 +84,8 @@
           "onTakenFromSlot": {
             "name": "Craft"
           },
-          "x": 244,
-          "y": 68
+          "x": 240,
+          "y": 75
         }
       },
       {
@@ -118,8 +118,148 @@
           "x": 319,
           "y": 153
         }
+      },
+      {
+        "type": "inputslot",
+        "data": {
+          "inputLimit": {
+            "value": ""
+          },
+          "disablePlacement": {
+            "fixedValue": false
+          },
+          "id": 4,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": true,
+          "onSlotChanged": {
+            "name": "Input"
+          },
+          "x": 87,
+          "y": 57
+        }
+      },
+      {
+        "type": "outputslot",
+        "data": {
+          "id": 5,
+          "disablePickup": {
+            "fixedValue": false
+          },
+          "dropItemsWhenNotBound": true,
+          "onTakenFromSlot": {
+            "name": "WarHeadCraft"
+          },
+          "x": 87,
+          "y": 147
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_left",
+          "image": "left.png",
+          "hoveredImage": "lefti.png",
+          "onClick": {
+            "name": "Left"
+          },
+          "x": 78,
+          "y": 151
+        }
+      },
+      {
+        "type": "imagebutton",
+        "data": {
+          "name": "imagebutton_right",
+          "image": "right.png",
+          "hoveredImage": "righti.png",
+          "onClick": {
+            "name": "Right"
+          },
+          "x": 107,
+          "y": 151
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_tntcount",
+          "text": {
+            "fixedValue": "",
+            "name": "Tntcount"
+          },
+          "color": {
+            "value": -3407872,
+            "falpha": 0.0
+          },
+          "x": 85,
+          "y": 93
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_blazecount",
+          "text": {
+            "fixedValue": "",
+            "name": "Blazecount"
+          },
+          "color": {
+            "value": -39424,
+            "falpha": 0.0
+          },
+          "x": 85,
+          "y": 111
+        }
+      },
+      {
+        "type": "label",
+        "data": {
+          "name": "label_proc_starcount",
+          "text": {
+            "fixedValue": "",
+            "name": "Starcount"
+          },
+          "color": {
+            "value": -6036766,
+            "falpha": 0.0
+          },
+          "x": 85,
+          "y": 129
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "tnt.png",
+          "use1Xscale": true,
+          "x": 69,
+          "y": 84
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "blaze_powder.png",
+          "use1Xscale": false,
+          "x": 69,
+          "y": 102
+        }
+      },
+      {
+        "type": "image",
+        "data": {
+          "image": "nether_star.png",
+          "use1Xscale": false,
+          "x": 69,
+          "y": 120
+        }
       }
     ],
+    "onOpen": {
+      "name": "WarHeadShow"
+    },
     "onTick": {
       "name": "TryToCraft"
     },
@@ -130,7 +270,7 @@
       "sx": 18,
       "sy": 18,
       "ox": 11,
-      "oy": 15,
+      "oy": 23,
       "snapOnGrid": false
     }
   }
